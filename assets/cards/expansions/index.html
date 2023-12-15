@@ -1,0 +1,250 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DevKit</title>
+    <link rel="stylesheet" type="text/css" href="../../../style/Seshat/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../../style/Ferrum/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../../style/testarea.css">
+
+    <script src="../../../js/jspdf.umd.min.js"></script>
+    <script src="../../../js/svg2pdf.umd.min.js"></script>
+    <script src="../../../js/fonts/Seshat-normal.js"></script>
+    <script src="../../../js/fonts/Ferrum-normal.js"></script>
+
+    <script src="../../../js/cardprinter.js"></script>
+    <script src="../../../js/svg.js"></script>
+
+    <script src="../../../js/config.js"></script>
+    <script src="../../../js/cardtools.js"></script>
+    <script src="../../../js/cardpainter.js"></script>
+    <script src="../../../js/deckpainter.js"></script>
+    <script src="../../../js/testarea.js"></script>
+    
+    <style>
+        .link {
+            cursor: pointer;
+            text-decoration: underline;
+            color:#f00;
+        }
+    </style>
+
+</head>
+<body onload="onl()">
+    <div style="position: absolute;left: -1000px;">
+        <div style="font-family: Seshat;">Font loaded</div>
+        <div style="font-family: Times; font-weight: bold;">Font loaded</div>
+        <div style="font-family: Ferrum;">Font loaded</div>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><span class="link" onclick="generate('KSV247SUP')">Generate KSV247SUP</span></li>
+        </ul>
+    </div>
+    <div id="container"></div>
+</body>
+<script>
+
+    let
+        loaded=false;
+
+    function onl() {
+        loaded=true;
+    }
+
+    function generate(set) {
+        if (loaded) {
+            let
+                ENV={
+                    imagesRoot:"../../illustrations/",
+                    databaseRoot:"../../../database/",
+                    templatesRoot:"../../../svg/"
+                },
+                cardTools = new CardTools(ENV);
+            cardTools.downloadImage(ENV.imagesRoot+"illustrations.png",(image)=>{
+                const
+                    PLACE_LEVEL=2,
+                    BASE_LIFE=1,
+                    BASE_ATTACK=1,
+                    NO_ATTACK=0,
+                    NO_LIFE=1,
+                    SUPPORT_ATTACK=2,
+                    SUPPORT_LIFE=2,
+                    EVENT_UNIT_DISCARD="On defeat: add this card to {CONFIG.placeStack}.",
+                    PLACES_REINFORCEMENTS=[
+                        {
+                            boosts:[
+                                { level:PLACE_LEVEL },
+                                { level:PLACE_LEVEL },
+                                { level:PLACE_LEVEL },
+                                { level:PLACE_LEVEL },
+                                { level:PLACE_LEVEL },
+                                { level:PLACE_LEVEL }
+                            ],
+                            bodies:[
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 1st and 2nd column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 1st and 3rd column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 1st and 4th column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 2nd and 3rd column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 2nd and 4th column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 3rd and 4th column." },
+                            ]
+                        }
+                    ],
+                    ILLUSTRATION_INDEX={
+                        ink_reseller:{x:6,y:7},
+                        paper_supplier:{x:7,y:7},
+                        chief_maintainer:{x:8,y:7},
+                        jammed_paper:{x:9,y:7},
+                        dry_cardridge:{x:0,y:8},
+                        stack_of_paper:{x:1,y:8},
+                        paper_company:{x:2,y:8},
+                        fixit_punch:{x:3,y:8},
+                        fixit_kick:{x:4,y:8},
+                    };
+
+
+                let
+                    container=document.getElementById("container"),
+                    rawEvents = [],
+                    rawUnits = [],
+                    rawPlaces = [];
+                    rawText = [],
+                    cards = {
+                        deck:[]
+                    };
+
+                switch (set) {
+                    case "KSV247SUP":{
+                        cards.meta={
+                            id: set,
+                            version: "1.0",
+                            language:"EN",
+                            type: "expansion",
+                            dateCreated: "20231128",
+                            dateUpdated: cardTools.dateToString(),
+                            name: "24/7 Tech Support",
+                            description: "A small set of 6 Units, Places, and Events that manipulates the Ink level and provides temporary boosts.",
+                            flavorText: "The Sacred Printer is printing a tech support team to refill its ink and paper and fix its jams! Steal it before it's too late and turn it into your special troop!",
+                            author: "KesieV",
+                            authorLink: "https://www.kesiev.com/"
+                        };
+                        rawUnits.push({
+                            boosts:[
+                                // --- Lv.1
+                                [
+                                    { attack:1, trigger:"onLife", description:"Discard this card.", symbol:"fire", symbolAmount:1, doNotMerge:true },
+                                ],
+                                [
+                                    { life:1, trigger:"onLife", description:"Discard this card.", symbol:"water", symbolAmount:1, doNotMerge:true }
+                                ],
+                                // --- Lv.2
+                                [
+                                    { attack:1, trigger:"onLife", description:"Discard this card.", symbol:"air", symbolAmount:1, doNotMerge:true },
+                                ],
+                                [
+                                    { life:1, trigger:"onLife", description:"Discard this card.", symbol:"earth", symbolAmount:1, doNotMerge:true }
+                                ],
+                                // --- Lv.3
+                                [
+                                    { attack:1, life:1, trigger:"onLife", description:"Discard this card.", symbol:"fire", symbolAmount:1, doNotMerge:true }
+                                ],
+                                [
+                                    { life:1, attack:1, trigger:"onLife", description:"Discard this card.", symbol:"water", symbolAmount:1, doNotMerge:true }
+                                ],
+                            ],
+                            bodies:[
+                                // --- Lv.1
+                                [
+                                    { level:-1, illustration:"ink_reseller", name:"Ink Reseller", symbol:"water", symbolAmount:1 }
+                                ], 
+                                [
+                                    { level:-1, illustration:"ink_reseller", name:"Ink Reseller", symbol:"fire", symbolAmount:1 }
+                                ], 
+                                // --- Lv.2
+                                [
+                                    { level:1, illustration:"paper_supplier", name:"Paper Supplier", trigger:"onLife", description:"Discard this card, draw 1 Unit Card, add it to this Unit, and ignore its effects now.", attack:BASE_ATTACK, life:BASE_LIFE, symbol:"earth", symbolAmount:1 }
+                                ],
+                                [
+                                    { level:1, illustration:"paper_supplier", name:"Paper Supplier", trigger:"onLife", description:"Discard this card, draw 1 Unit Card, add it to this Unit, and ignore its effects now.", attack:BASE_ATTACK, life:BASE_LIFE, symbol:"air", symbolAmount:1 }
+                                ],
+                                // --- Lv.3
+                                [
+                                    { level:1, illustration:"chief_maintainer", name:"Chief Maintainer", trigger:"onLife", description:"Discard this card, draw 1 Unit Card, add it to this Unit, and apply its effects now.", attack:BASE_ATTACK, life:BASE_LIFE, symbol:"air", symbolAmount:1 }
+                                ],
+                                [
+                                    { level:1, illustration:"chief_maintainer", name:"Chief Maintainer", trigger:"onLife", description:"Discard this card, draw 1 Unit Card, add it to this Unit, and apply its effects now.", attack:BASE_ATTACK, life:BASE_LIFE, symbol:"earth", symbolAmount:1 }
+                                ]
+                            ]
+                        });
+                        rawPlaces = rawPlaces.concat(PLACES_REINFORCEMENTS);
+                        rawEvents.push([
+                            {
+                                level:1,
+                                illustration:"jammed_paper",
+                                name:"Jammed Paper",
+                                description:"Select 1 your Unit w/level < {level}: add this card to that Unit. "+EVENT_UNIT_DISCARD,
+                                flavorText:"\"Just... Ugh... PULL IT!\"",
+                                attack:0,
+                                life:0,
+                            },{
+                                level:2,
+                                illustration:"dry_cardridge",
+                                name:"Dry Cartridge",
+                                description:"Select 1 your Unit w/level < {level-1}: add this card to that Unit. "+EVENT_UNIT_DISCARD,
+                                flavorText:"\"Is this cyan... or blue?\"",
+                                attack:0,
+                                life:0,
+                            }
+                        ]);
+                        rawEvents.push([
+                            {
+                                level:-1,
+                                illustration:"stack_of_paper",
+                                name:"Stack of Paper",
+                                description:"Discard 2 Unit Cards: draw 2 Unit Cards.",
+                                flavorText:"\"Real business is done on paper.\""
+                            },{
+                                level:-2,
+                                illustration:"paper_company",
+                                name:"Paper Company",
+                                description:"Discard any number of Unit Cards: draw the same number of Unit Cards.",
+                                flavorText:"\"Bears, beets, Battlestar Galactica.\""
+                            }
+                        ]);
+                        rawEvents.push([
+                            {
+                                level:0,
+                                illustration:"fixit_punch",
+                                name:"Fix-It Punch",
+                                description:"{level} is less than 4: draw 1 card.",
+                                flavorText:"\"You don't need a technician. You need a well-placed punch.\""
+                            },{
+                                level:-1,
+                                illustration:"fixit_kick",
+                                name:"Fix-It Kick",
+                                description:"{level} is greater than 4: draw 1 card.",
+                                flavorText:"\"You don't need an expert. You need a well-placed kick.\""
+                            }
+                        ]);
+                        break;
+                    }
+                }
+
+                if (rawUnits.length || rawEvents.length)
+                    cardTools.generateDeckFromRaw(cardTools,rawUnits,rawPlaces,rawEvents,rawText,cards,image.canvasData,ILLUSTRATION_INDEX);
+
+                container.innerHTML="";
+                if (window.location.hash.substring(1) == "preview")
+                    cardTools.showPrintPreview(container,cards);
+                else
+                    cardTools.showDevKit(container,cards);
+                
+            });
+        }
+    }
+
+</script>
+</html>

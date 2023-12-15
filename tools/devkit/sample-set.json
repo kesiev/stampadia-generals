@@ -1,0 +1,89 @@
+{
+	"meta":{
+		"id": "SAMPLE",
+		"language": "EN",
+		"version": "1.0",
+		"type": "full",
+		"cardsCount": 3,
+		"dateCreated": "20240101",
+		"dateUpdated": "20240101",
+		"name": "Sample set",
+		"description": "A sample set you can use to start creating your own!",
+		"flavorText": "Add a bit of story that fits this card set.",
+		"author": "KesieV"
+	},
+	"deck":[
+		[
+			{
+				"version": "1.0",
+				"type": "unit",
+				"level": 1,
+				"name": "Unit name",
+                "trigger": "onDefend",
+				"condition": "{air}{water}",
+                "description":"Put here this Unit boost.",
+                "area": true,
+				"symbol": "fire",
+				"symbolAmount": 1,
+				"life": 1,
+				"boostSymbol": "water",
+				"boostSymbolAmount": 2,
+				"boostTrigger": "bfBattle",
+				"boostCondition": "{fire}{air}",
+				"boostDescription": "Put here this Unit boost.",
+				"boostAttack": 1,
+				"illustration": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000KK000000000000000000000KEEK00KKK00000000000000KKKEK0KAAAK00000000000KK9999KKFFFFKKK00000000K99OOOOK99K22K9K0000000K499OAA22K99KK99K700000K499OOKKK22K99OEEK700000K99O69OA22229EKEKK700000K9O6669O22K2EEKK77770000KO66669O22K2EEKEK7770000KEOO69OA2222OKKEEKKK0000KEEEOOKKK22K99K99EEK00000KEEEOAA22K999KK999K000000KEEOOOOKK99K22K99K0000000KKEEEEK0KFFFFKKKK000000000KKKEK00KAAAK0000000000000KEEK000KKK000000000000000KK00000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			},
+			{
+				"version": "1.0",
+				"type": "place",
+				"level": 2,
+                "boostTrigger": "onAll",
+                "boostDescription":"Put here this Place boost.",
+				"boostSymbol": "air",
+				"boostSymbolAmount": 1,
+				"name": "Place Name",
+				"description": "Put here this Place description."
+			}
+		],
+		[
+			{
+				"version": "1.0",
+				"type": "event",
+				"level": 1,
+				"name": "Event name",
+				"boostCondition": "{air}{water}",
+                "boostDescription":"Put here this Event boost.",
+				"description": "Put here this Event description.",
+				"flavorText": "\"Add some flavor text that fits the card!\"",
+				"illustration": "000000000000000000000000000000K000000000KKK0000000000KEK0000000K1MMK00100000K99EK0000KKKMMMK0010000K999EK000K11GKMMMK01000K9999EEK0KK111K6MMK0110K999KKKKKK66K11K66OK011K999K111111K69KK666KK111K99K11KKK111K99666K00111K99K1111G11169666K000111K999K111391KK666K0000111K999K111991KKB66KKKKK111K99K111GG111B66G6MMMMK11K99KG1KKK11GK6GGGMMMMMK1K999KGGGGGGK66KK66MMMMK10K999KKKGKK66K00KKKMMMK100K999EEK11KK000000KKK10000K99EKK1GGK000000000100000KEKK1111K0000000001000000KK1KKKK000000000010000000KK0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			},
+			{
+				"version": "1.0",
+				"type": "event",
+				"level": -1,
+				"name": "Event name",
+                "boostSymbol": "water",
+				"boostSymbolAmount": 2,
+				"boostTrigger": "bfBattle",
+                "boostDescription": "Put here this Event boost.",
+				"description": "Put here this Event description.",
+				"flavorText": "\"Add some flavor text that fits the card!\"",
+				"illustration": "0000000000000000000000000009900000000000009900000999900KK000000099990000090000KK1KKKK0009000001000000KEKK1111K00000000100000K99EKK1GGK0000000010000K999EEK11KK00000KKK1000K999KKKGKK66K0KKK1MMK10K999KGGGGGGK66KK6MMMMK10K99KG1GK111GK6GGMMMMMK10K99K11KG1K11B66GMMMMK110K999K11G11K1BB66KKKK1110K999K11991K1B66600001110K99K11K391116966K0001110K99K111KG111K9966K001110K999K111111K69KK66KK11100K999KKKKKK66K11K6OK011000K9999EEK0KK111KMMK0110000K999EK000K11GKMMK01000000K99EK0000KKKMMK0010009900KEK0000000KMMK00109999000K00000000KKK00000900000000000000000000000000000000000000000000000"
+			}
+		],
+		[
+			{
+				"version": "1.0",
+				"type": "text",
+				"title": "Text card title",
+				"text": [
+                    "{bold}This is the Text card content.{endbold}",
+                    "You can use the same card symbols here, like {level} and {phasedefense}!",
+                    "",
+                    "{italic}Have a look to the Full Core Set JSON file to see what you can do here.{enditalic}"
+                ]
+			}
+		]
+	]
+}

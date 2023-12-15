@@ -1,0 +1,117 @@
+{
+  "placeholders":{
+    "manualVersion":"0.1",
+    "gameShortTitle":"GOS",
+    "place":"Stampadia",
+
+    "print-shop":"the Print Shop",
+
+    "any-counter":"a dice (or any other counter)",
+
+    "set-core":"Core Set",
+    "set-core-plural":"Core Sets",
+    "set-expansion":"Expansion Set",
+    "set-expansion-plural":"Expansion Sets",
+
+    "column-battlefield-plural":"the Battlefield Columns",
+
+    "level":"Level",
+    "level-stack":"the Stack Level",
+    "level-ink":"Ink Level",
+    "level-ink-simple":"Ink Level",
+    "level-place":"the Place Stack level",
+
+    "bar-header":"header bar",
+    "bar-header-plural":"header bars",
+    "bar-header-filled":"filled header bar",
+    "bar-header-empty":"empty header bar",
+
+    "deck-event":"the Event Deck",
+    "deck-printer":"the Printer Deck",
+
+    "card-unit":"Unit Card",
+    "card-unit-plural":"Unit Cards",
+    "card-event":"Event Card",
+    "card-event-plural":"Event Cards",
+    "card-place-plural":"Place Cards",
+    "card-place":"Place Card",
+
+    "inhabitant":"Stampadian",
+    "inhabitant-plural":"Stampadians",
+
+    "enemy":"the Sacred Printer",
+
+    "face-down":"face-down",
+    "face-up":"face-up",
+
+    "unit":"Unit",
+    "unit-plural":"Units",
+
+    "phase-check":"Check Phase",
+    "phase-play":"Play Phase",
+    "phase-attack":"Attack Phase",
+    "phase-advance":"Advance Phase",
+    "phase-defense":"Defense Phase",
+    "phase-recover":"Recover Phase",
+
+    "shield-area":"Shields Area",
+
+    "stack":"stack",
+    "stack-plural":"stacks",
+
+    "print":"Print",
+
+    "version-lite":"Lite version",
+    "version-full":"Full version",
+
+    "wound-plural":"wounds",
+
+    "skill":"Skill",
+    "skill-plural":"Skills",
+
+    "element":"Element",
+    "element-plural":"Elements"
+
+  }
+}
+{TEXT}
+{image logo}
+{centerOpen}
+Game version: {config-version} - Variants Lab version: {manualVersion}
+{centerClose}
+{boxOpenNotes}
+You can find manuals, FAQs, and more information about {config-title} at {config-learnUrl}
+{boxCloseNotes}
+
+# Welcome to the Variants Lab!
+
+This manual collects some {config-title} **experimental game variants** you can play. Feel free to give it a shot and share your impressions. If a game mode listed here is fun enough it will be moved to the **Game Manual**!
+
+# 2 Players: Printer Player vs. General Player
+
+{boxOpenNotes}
+**By:** Preuk
+{boxCloseNotes}
+
+# 2 Players Co-op: Printer vs. 2 General Players
+
+{boxOpenNotes}
+**By:** KesieV
+{boxCloseNotes}
+
+A friendly voice echoes through the dungeon: **"Hold on! I'm coming!"**. A fellow {inhabitant} adventurer joined the battle!  
+Will you be able to coordinate and defeat {enemy}?
+
+This variant aims to allow 2 players to play {config-title} cooperatively, applying a few changes to the basic rules. This game mode is not suited for the game {version-lite} so **the game's {version-full} is required**.
+
+During the game **Setup**, instead of drawing 5 {card-unit-plural}, each player draws 4 {card-unit-plural} to form their starting hand.
+
+At the beginning of the **{phase-play}**, the players decide who the **First General** and the **Second General** is. The First General then performs a **single action** (Add a {unit} card from its hand to the battlefield, lose 1 health to draw a {unit} card, sacrifice 1 {unit}, or declare the {phase-play} end) and then passes the turn to the Second General. The two generals alternate turns until one of them declares the {phase-play} ends.
+
+During the **{phase-recover}**, each player may draw up to 1 shield from the {shield-area}.
+
+During the game, both generals **share the same {config-life} pool**. When a card effect or condition asks the player to draw or discard cards, the players may **split every single action of that effect or condition as they want**. That means that if an effect asks the player to discard 2 cards, both players may discard 1 card or one of them may discard 2 cards.
+
+{boxOpen}
+**{card-event-plural:capital}**. {card-event-plural:capital} can be still activated **anytime** by both players. The card effects and costs splitting rule applies to {card-event-plural} too.
+{boxClose}

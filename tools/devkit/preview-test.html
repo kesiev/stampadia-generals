@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DevKit - Test</title>
+    <link rel="stylesheet" type="text/css" href="../../style/Seshat/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../style/Ferrum/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../style/testarea.css">
+
+    <script src="../../js/jspdf.umd.min.js"></script>
+    <script src="../../js/svg2pdf.umd.min.js"></script>
+    <script src="../../js/fonts/Seshat-normal.js"></script>
+    <script src="../../js/fonts/Ferrum-normal.js"></script>
+
+    <script src="../../js/cardprinter.js"></script>
+    <script src="../../js/svg.js"></script>
+
+    <script src="../../js/cardtools.js"></script>
+    <script src="../../js/cardpainter.js"></script>
+    <script src="../../js/deckpainter.js"></script>
+    
+    <script src="../../js/config.js"></script>
+    <script src="../../js/testarea.js"></script>
+
+</head>
+<body onload="onl()">
+    <div style="position: absolute;left: -1000px;">
+        <div style="font-family: Seshat;">Font loaded</div>
+        <div style="font-family: Times; font-weight: bold;">Font loaded</div>
+        <div style="font-family: Ferrum;">Font loaded</div>
+    </div>
+</body>
+<script>
+
+function onl() {
+
+    let
+        ENV={
+            databaseRoot:"../../database/",
+            templatesRoot:"../../svg/"
+        },
+        cardTools = new CardTools(ENV);
+
+    cardTools.downloadFile("sample-set.json",(data)=>{
+
+        let set;
+
+        try {
+            set = JSON.parse(data);
+        } catch (e) {
+            set=0;
+        }
+
+        if (set)
+
+            if (set.meta.type == "full") {
+
+                // Test a full deck
+                let testArea = new TestArea(ENV,set);
+                testArea.run(document.body);
+
+            } else {
+
+                // Test an expansion (merged with a lite deck)
+                cardTools.downloadDeck(CONFIG.liteCoreDeckId,set.meta.language,(deck)=>{
+                    let
+                        merged = cardTools.mergeDecks([ deck, set ]),
+                        testArea = new TestArea(ENV,merged);
+                    testArea.run(document.body);
+                });
+
+            }
+        
+    });
+    
+}
+
+</script>
+</html>

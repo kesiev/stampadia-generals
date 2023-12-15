@@ -1,0 +1,65 @@
+<html><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Generals Of Stampadia - Learn how to play</title>
+	<link rel="stylesheet" href="style/learn.css">
+	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+	<script src="js/config.js"></script>
+
+</head><body onload="onl()">
+	<div id="body">
+        <a href="index.html" class="logo"></a>
+        <p id="learnHowToPlayTheGame">
+			<span class="accent">Generals Of Stampadia</span> is an <span class="accent">open-source print-and-play single-player Expandable Card Game</span>.<br>Learn how to play it!
+		</p>
+        <div class="divider"></div>
+        <h1>
+			<span id="theGameManual">The Game Manual</span>
+		</h1>
+        <div class="block">
+			<div class="image"><a class="manualLink" href="manuals/manual-EN.pdf"><div class="preview manual"></div></a></div>
+			<div class="description">
+				<p id="readTheManual">
+					Read the game manual (<a target="_blank" href="manuals/manual-EN.pdf">English</a>) to learn everything you need to defend <span class="accent">Stampadia</span>!
+				</p>
+				<p id="readTheManual">
+					Do you feel brave? Have a look at the <a target="_blank" href="manuals/manual-variantslab.pdf">Variants Lab</a> manual to learn some experimental game modes!
+				</p>
+			</div>
+		</div>
+        <div class="divider"></div>
+        <h1><span id="faqs">FAQs</span></h1>
+        <div id="faqsbox">
+			<h2>Cards</h2>
+			<div class="q">Q: Where are the game cards?</div>
+			<div class="a">A: You can print them from the <a href='printshop.html'>Print Shop</a>! You can select full and expansion sets and download the PDF to print and play!</div>
+			<div class="q">Q: There are so many options! Which sets do I need to play?</div>
+			<div class="a">A: If you want to give the game a try, just print the <b>Generals Of Stampadia Lite Core Set</b>: it is a small set of cards that includes what you need to play the basics. If you want more, go for the <b>Generals Of Stampadia Full Core Set</b>, which offers way more cards and mechanics.</div>
+			<div class="q">Q: And then?</div>
+			<div class="a">A: If you want to spice up your game, you can print <b>expansion sets</b> and add them to any of your core sets. If you can't find the expansion you want, why not try making <a target='_blank' href='https://github.com/kesiev/stampadia-generals/tree/master/tools'>your own set</a>?</div>
+			<div class="q">Q: I've made a super cool custom card set and I want to share it. How?</div>
+			<div class="a">A: That's fantastic! Let's talk about that on the project Discord server <a target="_blank" href="https://discord.gg/EDYP2N4RMn">here</a>!</div>
+			<div class="q">Q: I think that the game may be played in another cool way. Do you want to hear how?</div>
+			<div class="a">A: For sure! I'm collecting some experimental game variants into the <a target="_blank" href="manuals/manual-variantslab.pdf">Variants Labs</a> manual so feel free to share your custom rules on the Discord server <a target="_blank" href="https://discord.gg/EDYP2N4RMn">here</a>! Oh, the Variant Lab manual is mostly English-only.</div>
+			<div class="q">Q: I've played a Variant Lab mode quite often and I think that it should be an official mode!</div>
+			<div class="a">A: So maybe it's time to move it to the <span class="accent">Manual Variants</span>! Let's talk about that on the Discord server <a target="_blank" href="https://discord.gg/EDYP2N4RMn">here</a>!</div>
+			<h2>More</h2>
+			<div class="q">Q: How you're monetizing this game?</div>
+			<div class="a">A: <span class="accent">Generals Of Stampadia</span> is one of my hobby projects and, as for the <a target="_blank" href="https://github.com/kesiev">others</a>, I'm working on it in my spare time and it is released as open-source. I'm used to paying for hosting my stuff without getting anything back. So, yeah. I'm OK. If you find something I do that you like it's more than enough for me.</div>
+			<div class="q">Q: I'd like a print-and-play roguelike!</div>
+			<div class="a">A: You can play <span class="accent">Chronicles of Stampadia</span>, <span class="accent">Generals Of Stampadia</span>'s sequel! Every day there is a new adventure to print and play with a pencil, an eraser, two dice, and a small token. You can find that <a target="_blank" href="https://www.kesiev.com/stampadia">here</a>. Oh, It's English only... I hope that's not a problem for you.</div>
+			<div class="q">Q: Okay, but I'd like to play it with cards, like this game!</div>
+			<div class="a">A: Try <span class="accent">Travelers of Stampadia</span>, <span class="accent">Generals Of Stampadia</span>'s prequel! Every day there is a new hero and a new adventure to print and play! You can find that <a target="_blank" href="https://www.kesiev.com/stampadia-travelers">here</a>. It's both in English and Italian!</div>
+			<div class="q">Q: I have more questions!</div>
+			<div class="a">A: Don't worry! There's a Discord server <a target="_blank" href="https://discord.gg/EDYP2N4RMn">here</a> - we talk about everything Stampadia there and you may ask questions about the rules in the #gos-help-rules channel.</div></div>
+        <div class="divider"></div>
+        <div id="footer"></div>
+    </div>
+</body></html>
+<script>
+	function onl() {
+		document.getElementById("footer").innerHTML=CONFIG.footer;
+	}
+</script>

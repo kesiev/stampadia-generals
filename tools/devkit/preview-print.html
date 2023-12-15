@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DevKit - Print Preview</title>
+    <link rel="stylesheet" type="text/css" href="../../style/Seshat/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../style/Ferrum/stylesheet.css">
+
+    <script src="../../js/jspdf.umd.min.js"></script>
+    <script src="../../js/svg2pdf.umd.min.js"></script>
+    <script src="../../js/fonts/Seshat-normal.js"></script>
+    <script src="../../js/fonts/Ferrum-normal.js"></script>
+
+    <script src="../../js/cardprinter.js"></script>
+    <script src="../../js/svg.js"></script>
+
+    <script src="../../js/cardtools.js"></script>
+    <script src="../../js/cardpainter.js"></script>
+    <script src="../../js/deckpainter.js"></script>
+    
+    <script src="../../js/config.js"></script>
+
+</head>
+<body onload="onl()">
+    <div style="position: absolute;left: -1000px;">
+        <div style="font-family: Seshat;">Font loaded</div>
+        <div style="font-family: Times; font-weight: bold;">Font loaded</div>
+        <div style="font-family: Ferrum;">Font loaded</div>
+    </div>
+</body>
+<script>
+
+function onl() {
+
+    let
+        STYLE="DEF", // DEF, GSC, STY
+        ENV={
+            templatesRoot:"../../svg/"
+        },
+        cardTools = new CardTools(ENV);
+
+    cardTools.downloadFile("sample-set.json",(data)=>{
+
+        let set;
+
+        try {
+            set = JSON.parse(data);
+        } catch (e) {
+            set=0;
+        }
+
+        if (set)
+            cardTools.showPrintPreview(document.body,set,STYLE);
+
+    });
+    
+}
+
+</script>
+</html>

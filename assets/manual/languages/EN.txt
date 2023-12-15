@@ -1,0 +1,385 @@
+{
+  "placeholders":{
+    "manualVersion":"0.1",
+    "gameShortTitle":"GOS",
+    "place":"Stampadia",
+    "thanks":"**Bianca**, **Preuk**, and the **Discord** and **BGG** defenders of Stampadia for sharing their efforts and ideas",
+
+    "print-shop":"the Print Shop",
+
+    "any-counter":"a dice (or any other counter)",
+
+    "set-core":"Core Set",
+    "set-core-plural":"Core Sets",
+    "set-expansion":"Expansion Set",
+    "set-expansion-plural":"Expansion Sets",
+
+    "column-battlefield-plural":"the Battlefield Columns",
+
+    "level":"Level",
+    "level-stack":"the Stack Level",
+    "level-ink":"Ink Level",
+    "level-ink-simple":"Ink Level",
+    "level-place":"the Place Stack level",
+
+    "bar-header":"header bar",
+    "bar-header-plural":"header bars",
+    "bar-header-filled":"filled header bar",
+    "bar-header-empty":"empty header bar",
+
+    "deck-event":"the Event Deck",
+    "deck-printer":"the Printer Deck",
+
+    "card-unit":"Unit Card",
+    "card-unit-plural":"Unit Cards",
+    "card-event":"Event Card",
+    "card-event-plural":"Event Cards",
+    "card-place-plural":"Place Cards",
+    "card-place":"Place Card",
+
+    "inhabitant":"Stampadian",
+    "inhabitant-plural":"Stampadians",
+
+    "enemy":"the Sacred Printer",
+
+    "face-down":"face-down",
+    "face-up":"face-up",
+
+    "unit":"Unit",
+    "unit-plural":"Units",
+
+    "phase-check":"Check Phase",
+    "phase-play":"Play Phase",
+    "phase-attack":"Attack Phase",
+    "phase-advance":"Advance Phase",
+    "phase-defense":"Defense Phase",
+    "phase-recover":"Recover Phase",
+
+    "shield-area":"Shields Area",
+
+    "stack":"stack",
+    "stack-plural":"stacks",
+
+    "print":"Print",
+
+    "version-lite":"Lite version",
+    "version-full":"Full version",
+
+    "wound-plural":"wounds",
+
+    "skill":"Skill",
+    "skill-plural":"Skills",
+
+    "element":"Element",
+    "element-plural":"Elements"
+
+  }
+}
+{TEXT}
+{image logo}
+{centerOpen}
+Game version: {config-version} - Manual version: {manualVersion}
+{centerClose}
+{boxOpenNotes}
+You can find an updated digital version of this manual, FAQs, and more information about {config-title} at {config-learnUrl}
+{boxCloseNotes}
+
+# {place} is in danger!
+
+One day, a lonely {inhabitant} explorer finally found {enemy}, a fabled construct that **can change everything in the world as you order**. With the heart filled with fear and excitement, its shaking hands touched the machine.
+
+Then, a horrific buzz. Something inside its plastic box was nervously moving left and right, shaking the entire dungeon. The torches went out, leaving just a red blinking eye in the darkness.
+
+A long deadly silence. The explorer took a couple of steps back, holding its breath.
+
+Suddenly, the horrific buzz came back: a neverending stream of blocky pictures started popping out from {enemy}, depicting scary monsters, fearless soldiers, and strange creatures! As soon as the ink dried, **the images came to life and began their march out of the dungeon!**
+
+The explorer was frozen in fear: a raging horde was going to invade {place} and **there was no hope for the explorer to block it**! It closed its eyes, jumped into the cloud of papers, grabbed some of them, and **ordered the just-born creatures to attack back**. They responded with a nod and entered the fray, defending the exit. A spark of hope lit up the novice general's face.
+
+This is the story of how a humble explorer became a legendary general, saving {place} from destruction.
+
+# The Game
+
+{config-title:capital} is an **open-source print-and-play single-player Expandable Card Game**. Head to the project homepage ({config-homepageUrl}), visit {print-shop}, select the sets you want to play, print them in the style you like, and you're ready to go!
+
+**{set-core-plural:capital}** contain all you need to start playing, but you can print and mix {set-expansion-plural} to enrich your experience. **Anybody can create a new {set-core} or {set-expansion} and print it from {print-shop}**... and you can even propose your set to be added to the online catalog!
+
+This manual will explain to you **how to play the game**. If you want to know more about making sets, head to {print-shop}!
+
+# The Cards
+
+{image cards}
+
+In {config-title}, there are 2 types of double-sided cards: **the {card-unit-plural}** with a {bar-header-filled} and a single illustration on the top-right {symbol 1} and **the {card-event-plural}** with an {bar-header-empty} and 2 illustrations - one on the top-right and one on the bottom-left {symbol 3}. An upside-down {card-unit} (i.e. with the illustration on the bottom left) is called **a {card-place}** {symbol 2}.
+
+{card-unit-plural:capital} have 2 columns on top-right part {symbol 4}: the {unit} attack value ({symbol sword-filled}) and the {unit} life value ({symbol heart-filled}).
+
+Cards may have 1 or 2 **{skill-plural}** {symbol 5}.
+
+Symbol on top-left part of the {unit} card {symbol 7} describes when it is enabled: {symbol sword} when {unit} attacks, {symbol shield} when it defends, {symbol heart} when its {config-life} is evaluated, {symbol skull} when is defeated, {symbol front} when an {config-enemyUnit} attacks it, and {symbol any} during all phases. You'll learn more about them later in this manual.
+
+The {skill} text describes its effect and some of these descriptions may have a condition before a colon: the {unit} must meet that to activate the effect.
+
+Some cards may infuse a {unit} with one or more {element-plural} {symbol 6}. {element-plural:capital} are Fire ({symbol fire-color}/{symbol fire-bw}), Earth ({symbol earth-color}/{symbol earth-bw}), Water ({symbol water-color}/{symbol water-bw}), and Air ({symbol air-color}/{symbol air-bw}) and are often used to satisfy {skill-plural} conditions.
+
+Cards also have a **{level}** value printed on the top-left corner {symbol 7} that may be a positive or negative number (i.e. A **{level} 2 {card-unit}** is a {card-unit} with a 2 printed on its top-left).
+
+{boxOpen}
+**The golden rule of Card Games**: if any text on a card goes against the rules of this manual, **the text on the card always takes precedence**!
+{boxClose}
+
+# {stack-plural:capital}
+
+{image stack}
+
+In {config-title} cards are usually arranged in vertical {stack-plural} so the {bar-header-plural} of the cards in the back are visible and the bottom card only is fully visible {symbol 1}.
+
+A {stack} acts like a single long card, to be read **from the bottom to the top** {symbol 2}. A {stack} may just have one card. Unreadable {stack} card features, such as upside-down halves or covered parts under the {bar-header}, are **considered blank**. To discard a {stack}, discard all of its cards.
+
+Cards or {stack-plural} may be **added to a {stack}** {symbol 3} placing its top just under the destination {stack} bottom card {bar-header}.
+
+It's pretty rare, but cards or sets may also be **merged with a {stack}** {symbol 4}: move it to slide its bottom card part **behind** the destination {stack} top card, extending the destination {stack} chain of visible {bar-header-plural} upwards.
+
+The sum of the {level} value of the {stack} cards gives **{level-stack}** {symbol 5}.
+
+For a {stack} of {card-unit-plural}, this manual and the cards' text omit the "{stack}" word, so it's just called **a {unit}**. That means that **a {level} 7 {unit}** is a {stack} of {card-unit-plural} whose cards {level} sum is 7.
+
+# Setup
+
+Make sure you've printed at least one {config-title} {set-core} and as many {set-expansion-plural} as you want.
+
+Pick all of the {card-unit-plural}, orient them with the illustration on the top-right, and shuffle them to form **{deck-printer}** {symbol 1}.
+
+If it contains **less than {config-liteDeckUnitCards} cards**, you're playing the game **{version-lite}**:
+
+{image lite}
+
+{listStart}
+Pick {any-counter}, set it to 5, and put it in front of you. It will keep track of your **{config-life}** {symbol 2}.
+{listItemNext}
+Use 4 small markers (like a button, a shell, a cube, or any small object you like) to form a long horizontal line. These will mark **{column-battlefield-plural}** {symbol 3}. {column-battlefield-plural:capital} are numbered from 1 to 4 from the left to the right.
+{listEnd}
+
+If it contains **{config-liteDeckUnitCards} cards or more**, you're playing the game **{version-full}**:
+
+{image full}
+
+{listStart}
+Flip {deck-printer} {face-down}.
+{listItemNext}
+Draw 5 {face-down} cards and put them in front of you. These will keep track of your **{config-lifeCardPlural}** {symbol 2}.
+{listItemNext}
+Draw 4 more {face-down} cards, orient them horizontally, and arrange them to form a horizontal line. These will mark **{column-battlefield-plural}** {symbol 3}. {column-battlefield-plural:capital} are numbered from 1 to 4 from the left to the right.
+{listItemNext}
+Flip {deck-printer} back {face-up}.
+{listEnd}
+
+Anytime you've to **draw a {card-unit}**, draw it from the top of {deck-printer} {symbol 1}: its top card is always {face-up} so you always have a preview of any draw actions. **{card-place-plural:capital} are drawn from the same deck** - just draw a card and turn it upside down.
+
+{card-unit-plural:capital} (and so the {card-place-plural}) are discarded horizontally on the left of {deck-printer} {symbol 4}, with the {unit} side to the right. When the last card of {deck-printer} is drawn, shuffle this discard pile to form a new deck.
+
+{boxOpen}
+**{card-event-plural:capital}**. {card-event-plural:capital} are discarded turning them upside down and placing them {face-up} on the bottom of {deck-event}.
+{boxClose}
+
+The 4 {config-spacePlural} below the lined-up horizontal cards or tokens form **the {config-playerRow}**: you'll play your {unit-plural} here {symbol 5}. Right over the line, there is **the {config-frontRow}** {symbol 6}: {enemy} {unit-plural} will attack your {unit-plural} on the {config-playerRow} from there and vice versa.
+
+All {unit-plural} on the same row are **{config-allyUnit}**, the other row is **the {config-opposingRow}**, and all {unit-plural} in the {config-opposingRow} are **{config-enemyUnit}**.
+
+Behind the {config-frontRow} there is **the {config-incomingRow}** {symbol 7}: these are {enemy}'s freshly printed {unit-plural}. They won't have any effect but they will advance the next turn to the {config-frontRow}, when the {config-space} in front of them will be empty.
+
+Near the battlefield {config-playerRow} there is **the {shield-area}** {symbol 8}: there you'll store **the {config-shieldPlural}** earned by attacking. You'll discard them to defend against direct attacks and gain one of them if you manage to spare some.
+
+Under {deck-printer}, there will be **the {config-placeStack}** {symbol 9}, a vertical {stack} of cards that keeps track of {enemy} consumed ink and special effects that affect the battlefield.
+
+Pick {any-counter}, set it to 3, and put it on the right of {deck-printer} {symbol 10}. It keeps track of **the {level-ink}** ({symbol l}) that limits the battle length and intensity. If it's your first game, set the {level-ink} to 2 instead.
+
+Finally, draw 5 {card-unit-plural} to form your starting hand. Ready for the battle?
+
+{boxOpen}
+**{card-event-plural:capital}**. It seems that more {inhabitant-plural}, hearing the noise, are about to **join you at the dungeon entrance**!
+
+If you've any {card-event-plural}, separate them from the others **keeping the orientation of your previous game** to form {deck-event}, shuffle it, and place it {face-up} next to you {symbol e}.
+
+No {card-event-plural}? Don't worry: you will face the threat alone! {card-event-plural:capital} give you little challenges and rewards to spice up the battle, so consider visiting {print-shop} and printing some of them!
+{boxClose}
+
+# How To Play
+
+{enemy:capital} will keep printing {unit-plural} and send them against you, so you've to hold your ground... By **stealing** its paper and **printing your army**! {enemy:capital} will run out of ink from time to time, so you'll have little time to take a breath. Then {enemy} will **raise the {level-ink}** and start printing even stronger {unit-plural}! **Survive the 6th {level-ink-simple} to exhaust {enemy} once and for all, save {place}, and win**! ...or die trying!
+
+Every turn follows these 6 phases:
+
+{listStart}
+**{phase-check}**: Check the winning or losing conditions and add a {card-place} to the {config-placeStack}.
+{listItemNext}
+**{phase-play}**: You will play cards from your hand on the {config-playerRow} or decrease your {config-life} to steal {card-unit-plural} from {deck-printer}.
+{listItemNext}
+**{phase-attack}**: The leftmost {config-exhaustedNot} unit {config-playerRow} {unit-plural} will attack {enemy} {unit-plural} on the {config-frontRow} or collect {config-shieldPlural} and then the {unit} is {config-exhausted}. Repeat this phase until all {config-playerRow} {unit-plural} are {config-exhausted}. Then, all {config-playerRow} {unit-plural} are {config-restored}.
+{listItemNext}
+**{phase-advance}**: Move {enemy} {unit-plural} from the {config-incomingRow} to the {config-frontRow} if possible.
+{listItemNext}
+**{phase-defense}**: {enemy:capital} leftmost {config-exhaustedNot} {unit-plural} on the {config-frontRow} will attack your {config-playerRow} {unit-plural}, depleting your {config-shieldPlural} or forcing you to lose {config-life} and then the {unit} is {config-exhausted}. Repeat this phase until all {config-frontRow} {unit-plural} are {config-exhausted}. Then, all {config-frontRow} {unit-plural} are {config-restored}.
+{listItemNext}
+**{phase-recover}**: Gain 1 card from the spared {config-shieldPlural} and discard the rest.
+{listEnd}
+
+Repeat these phases until **you exhaust {enemy}** and win or **you run out of {config-life}** and lose.
+
+{boxOpen}
+**{card-event-plural:capital}**. {card-event-plural:capital} can be activated at any time, as long as the conditions preceded by the colon are respected. Once an {card-event} is activated, it's added to the {config-placeStack} as for the {card-place-plural}.
+{boxClose}
+
+# {phase-check}
+
+First, check the {level-place}: if it's lower than the current {level-ink} you will **evolve the {config-placeStack}**, or you will **check the battle end conditions instead**. If there is no {config-placeStack}, {level-place} is 0.
+
+To **evolve the {config-placeStack}** draw **one** new {card-place}, add it to the {config-placeStack}, and follow the new card instructions. {card-place-plural:capital} often ask to **{print} level** {symbol l} **{unit-plural} somewhere**: to do that, check if the required {config-space} is empty and create a new {stack} of {card-unit-plural} adding them until {level-stack} **reaches or surpasses** the current {level-ink} ({symbol l}). After following the {card-place}, **go on to the {phase-play}**.
+
+To **check the battle end conditions**, check if there is any {unit} on the {config-incomingRow} or the {config-frontRow}: if yes **go on to the {phase-play}**, else **end the battle**.
+
+To **end the battle** discard all of the units on the {config-playerRow} and the {config-placeStack}. Now check the {level-ink}: if it's 6 **{enemy} is exhausted and you won**, else **start the next battle**.
+
+To **start the next battle** raise the {level-ink} by 1, **perform the {config-healingAction} twice**, and perform this whole {phase-check} again.
+
+# {phase-check}: {config-healingAction}
+
+To perform a **{config-healingAction}** decide on 1 of these options:
+
+{listStart}
+**{config-life}-up**: If your {config-life} is less than {config-lifeLimit}, you may decide to gain 1 {config-life}.
+{listItemNext}
+**Power-up**: If you've less than {config-handLimit} cards in your hand, you may decide to draw {deck-printer} top card.
+{listItemNext}
+**Leave**: You may decide to just discard {deck-printer} top card.
+{listEnd}
+
+# {phase-check}: Your {config-life}
+
+On the game {version-lite}, {config-life} works this way:
+
+{listStart}
+**To gain 1 {config-life}**: Discard the top card of {deck-printer} and increase the {config-life} counter value by 1. 
+{listItemNext}
+**To lose 1 {config-life}**: If the {config-life} counter value is 1 or more, decrease its value by 1. If it's 0, set the counter apart. If the counter is set apart and you've to lose {config-life} **the game ends and you lose**.
+{listEnd}
+
+The {version-full} works this way instead:
+
+{listStart}
+**To gain 1 {config-life}**: Draw the top card of {deck-printer} and add it {face-down} to your remaining {config-lifeCardPlural}.
+{listItemNext}
+**To lose 1 {config-life}**: Pick one of your {config-lifeCardPlural} and discard it {face-up}. If you've to lose {config-life} and you don't have any {config-lifeCard} **the game ends and you lose**.
+{listEnd}
+
+At any time **you can't own more than {config-lifeLimit} {config-life}** so, once you've {config-lifeLimit} {config-life}, ignore any "gain {config-life}" action.
+
+# {phase-check}: Your hand
+
+Your hand is mostly made with {card-unit-plural} and you're going to play them to build your {unit-plural}. **You can't ever have more than {config-handLimit} cards in hand** so, once you've reached this limit ignore any card-drawing action.
+
+# {phase-play}
+
+You may add {card-unit-plural} in your hand to your {unit-plural} on the {config-playerRow} as many times as you want.
+
+You can add it to an empty {config-space} or a {unit} but **you cannot add a {card-unit} to a {unit} whose {level} is equal to or higher than the current {level-ink}**. This check is done **before adding the {card-unit}**, so the {card-unit} you add may raise the {unit} {level} **over the current {level-ink}**.
+
+If you have at least 1 {config-life} you can choose to lose 1 {config-life} to draw the top card of {deck-printer} as many times as you want.
+
+You can also decide to **sacrifice one of your {unit-plural}**: you may draw 1 of its {card-unit-plural} **except the bottom one** and discard the rest, freeing its {config-space}. If the sacrificed {unit} is made by just 1 card, discard it drawing no cards.
+
+Once you're done, go to **the {phase-attack}**.
+
+# {phase-attack}
+
+Your leftmost {config-restored} {unit-plural} on the {config-frontRow} will **perform an attack action** until all of them are {config-exhausted}. These are the {unit} attack phases:
+
+{listStart}
+**Calculate the attacker's attack value**: sum the numbers on the {symbol sword-filled} column and apply all of the {symbol sword} and {symbol any} {skill-plural}, from the bottom to the top.
+{listItemNext}
+**Check if the unit attacks**: if the attack value is less or equal to 0, the {unit} doesn't attack and skip to the **Check attacker unit defeat** phase.
+{listItemNext}
+**Define the attack target {config-space}**: if the {skill-plural} so far didn't mention any targeted {config-space}, it will be **the {config-space} in the same column of the attacker on the {config-frontRow}**.
+{listItemNext}
+**Check the {unit} on target {config-space}**: if there is no {config-enemyUnit} on the target **gain 1 {config-shield}** and skip to the **Check attacker unit defeat** phase, otherwise that {unit} becomes the **target {unit}**.
+{listItemNext}
+**Apply target {unit} defense {skill-plural}**: On the target unit apply the {symbol shield} and {symbol any} {skill-plural}.
+{listItemNext}
+**Add {wound-plural}**: Add as many {wound-plural} ({symbol wound}) as the resulting attack on the target card. You may place one dice on wounded units to keep track of their {symbol wound} value. If the attack is less or equal to 0, do not add any wound.
+{listItemNext}
+**Check target {unit} defeat**: sum the numbers on the {symbol heart-filled} column and apply all of the {symbol heart} and {symbol any} {skill-plural}, from the bottom to the top. If the {symbol wound} on the {unit} are greater or equal to its {symbol heart-filled} the unit is defeated ({symbol defeat}): apply all {symbol skull} and {symbol any} {skill-plural} on the defeated {unit}, from the bottom to the top, and discard the {unit}.
+{listItemNext}
+**Check attacker {unit} defeat**: do the previous step on the attacker {unit}.
+{listItemNext}
+**{config-exhaust:capital} the attacker {unit}**: if the attacker {unit} is not defeated, {config-exhaust} it.
+{listEnd}
+
+Keep in mind that **defeat is checked only on the attacking and the attacked unit (if any)**, so some {unit-plural} involved in the battle may survive even if their {symbol wound} exceeds their {symbol heart-filled}!
+
+When all of the {config-frontRow} {unit-plural} are {config-exhausted}, **{config-restore} all of them** and the {phase-attack} ends.
+
+# {phase-attack}: Multiple attacks
+
+{unit:capital}'s {skill} effects may let the {unit} perform multiple attacks on the same {config-space} or different {config-spacePlural}. For each attacked target {config-space} you've to perform the whole **phase-attack**.
+
+# {phase-attack}: {config-exhaust:capital} and {config-restore:capital}
+
+To {config-exhaust} a unit you've to **orient its bottom card horizontally**. To **{config-restore} a {unit}** you've to **orient its bottom card vertically to the {unit} side**. {unit-plural:capital} are {config-exhausted} after attacking and {config-restored} after the {phase-attack} but some effects can do the same.
+
+# {phase-attack}: {config-jump}
+
+Some {unit-plural} can **{config-jump}** from their own {config-space} to another one in the same row. {config-jumpPlural:capital} are usually followed by a destination (i.e. "{config-jump} to highest {symbol sword-filled} {config-enemyUnit}" means the {config-space} in front of the {config-enemyUnit} with the highest {symbol sword-filled}) or a direction and an amount of spaces (i.e. "{config-jump} 2 {config-spacePlural} {symbol right}" means the 2nd space on the {unit} right).
+
+To do that, check the destination {config-space}: if it's empty, move the {config-jumpDoing} {unit} there. If the {config-space} isn't empty, **the {config-jump} is not performed**.
+
+# {phase-attack}: The {config-shieldPlural}
+
+{config-shieldPlural:capital} are {card-unit-plural} kept in your {shield-area}. There is no limit on how many {config-shieldPlural} you can have.
+
+{listStart}
+**To gain 1 {config-shield}**: draw 1 {card-unit} and add it to your {shield-area}.
+{listItemNext}
+**To lose 1 {config-shield}**: discard 1 {card-unit} in your {shield-area}.
+{listEnd}
+
+You're going to use {config-shieldPlural} to defend yourself from {enemy} {unit-plural}' direct attacks during **the {phase-defense}**. In **the {phase-recover}** you may add one of your spared {config-shieldPlural} to your hand and the rest of them will be lost.
+
+# {phase-attack}: The {skill-plural:capital}
+
+Many {skill-plural} apply **only if a condition described before the colon is true**. Most of these conditions are about a certain {element-plural} infusion on the {unit}: the condition "{symbol fire-color}{symbol water-color}" requires the {unit} to be infused by at least 1 Fire symbol ({symbol fire-color}) and 1 Water symbol ({symbol water-color}) by the spheres on its right side. {element:capital} symbols are not consumed by conditions, so they may be reused to validate conditions on other {skill:plural}.
+
+A single {skill} can be activated **just once per attack phase** but some {skill} effects may be improved if **its condition is verified multiple times**. The effect "{symbol fire-color}{symbol water-color}: +{symbol x} {symbol sword-filled}" gives +1{symbol sword-filled} for every pair of {symbol fire-color}{symbol water-color} {element-plural} the {unit} is infused with.
+
+# {phase-attack}: Area {skill-plural}
+
+Some {skill-plural} may **affect other {unit-plural} on the battlefield** and are applied **at the beginning of their attack phase**:
+
+{listStart}
+**The {config-placeStack} {skill-plural}**: all {config-placeStack} {skill-plural} are applied **to all of the {unit-plural} on the battlefield**.
+{listItemNext}
+**The {symbol banner} {skill-plural}**: {card-unit-plural} {skill} effects with a long red banner on the left are applied **to all of the {unit-plural} on the battlefield**, both {config-allyUnitPlural} and {config-enemyUnitPlural}. {unit-plural:capital} on the {config-incomingRow} are **never active**, so their banner {skill} doesn't apply.
+{listItemNext}
+**The {symbol front} {skill-plural}**: {symbol front} {skill-plural} effects are applied **on the {unit} on the {config-opposingRow}**, right before evaluating the effects on its cards.
+{listEnd}
+
+Area {skill-plural} are applied **even by {config-exhausted} {unit-plural}**.
+
+If multiple area {skill-plural} are affecting a {unit}, apply them following this list order.
+
+# {phase-advance}
+
+From the left to the right, fetch all of the {unit-plural} on the {config-incomingRow} and check if the same column on the {config-opposingRow} is empty: if so, move that {unit} to the empty {config-space}.
+
+# {phase-defense}
+
+Repeat the {phase-attack}, but this time the {config-opposingRow} {unit-plural} will attack the {config-playerRow}. {enemy:capital} doesn't gain {config-shieldPlural}, so when a {unit} lands its attack on an empty space of the {config-frontRow} you may **discard as many {config-shieldPlural} as the incoming attack {symbol sword-filled}** or **lose 1 {config-life}** (regardless of the incoming attack {symbol sword-filled}).
+
+# {phase-recover}
+
+If you've any {config-shield} in your {shield-area} you may add 1 of them to your hand. Remember that your hand has a {config-handLimit}-card limit, so you can't add any of your {config-shieldPlural} if you've already {config-handLimit} cards in your hand.
+
+Then lose all of your remaining {config-shieldPlural}.
+
+{boxOpenNotes}
+{gameShortTitle} is a {config-license} licensed open-source project: {config-sourcesUrl}. Very special thanks to {thanks:format}.
+{boxCloseNotes}

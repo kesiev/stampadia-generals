@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DevKit</title>
+    <link rel="stylesheet" type="text/css" href="../../../style/Seshat/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../../style/Ferrum/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../../../style/testarea.css">
+
+    <script src="../../../js/jspdf.umd.min.js"></script>
+    <script src="../../../js/svg2pdf.umd.min.js"></script>
+    <script src="../../../js/fonts/Seshat-normal.js"></script>
+    <script src="../../../js/fonts/Ferrum-normal.js"></script>
+
+    <script src="../../../js/cardprinter.js"></script>
+    <script src="../../../js/svg.js"></script>
+
+    <script src="../../../js/config.js"></script>
+    <script src="../../../js/cardtools.js"></script>
+    <script src="../../../js/cardpainter.js"></script>
+    <script src="../../../js/deckpainter.js"></script>
+    <script src="../../../js/testarea.js"></script>
+    
+    <script src="setgenerator.js"></script>
+
+</head>
+<body onload="onl()">
+    <div style="position: absolute;left: -1000px;">
+        <div style="font-family: Seshat;">Font loaded</div>
+        <div style="font-family: Times; font-weight: bold;">Font loaded</div>
+        <div style="font-family: Ferrum;">Font loaded</div>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="#" onclick="generate(true)">Generate full deck deck</a></li>
+            <li><a href="#" onclick="generate(false)">Generate lite deck deck</a></li>
+        </ul>
+    </div>
+    <div id="container"></div>
+</body>
+<script>
+
+    let loaded=false;
+
+    function onl() {
+        loaded=true;
+    }
+
+    function generate(full) {
+        if (loaded) {
+            const
+                ENV={
+                    imagesRoot:"../../illustrations/",
+                    databaseRoot:"../../../database/",
+                    templatesRoot:"../../../svg/"
+                };
+
+            let
+                container=document.getElementById("container"),
+                cardTools = new CardTools(ENV),
+                deckGenerator = new SetGenerator(ENV,cardTools,full);
+
+            container.innerHTML="";
+            deckGenerator.generate(data=>{
+                console.log(data.stats);
+                cardTools.showDevKit(container,data.cards);
+            });
+        }
+    }
+
+</script>
+</html>

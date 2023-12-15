@@ -1,0 +1,40 @@
+<html><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Generals Of Stampadia</title>
+	<meta property="og:image" content="https://www.kesiev.com/stampadia-generals/images/og-image.png">
+    <meta property="og:description" content="Generals of Stampadia is an open-source print-and-play single-player Expandable Card Game.">
+
+	<link rel="stylesheet" href="style/home.css">
+	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="style/Ferrum/stylesheet.css">
+	<script src="js/config.js"></script>
+
+</head><body onload="onl()">
+	<div class="header">
+		<div class="strip"></div>
+        <div class="logo"></div>
+    </div>
+	<a href="learn.html" class="left panel">
+		<div class="image"></div>
+		<div class="text"><div class="content">
+			<div class="title">Learn how to play</div>
+			<div class="description">Read how to play Generals of Stampadia, an open-source print-and-play single-player Expandable Card Game.</div>
+		</div></div>
+	</a>
+	<a href="printshop.html" class="right panel">
+		<div class="image"></div>
+		<div class="text"><div class="content">
+			<div class="title">Visit the Print Shop</div>
+			<div class="description">Browse the Generals of Stampadia online card set database or print your own custom card set.</div>
+		</div></div>
+	</a>
+	<div id="footer"></div>
+</body></html>
+<script>
+	function onl() {
+		document.getElementById("footer").innerHTML=CONFIG.footer;
+	}
+</script>

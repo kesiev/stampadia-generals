@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Print Shop</title>
+    <link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="style/Ferrum/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="style/printshop.css">
+    <link rel="stylesheet" type="text/css" href="style/testarea.css">
+
+    <script src="js/jspdf.umd.min.js"></script>
+    <script src="js/svg2pdf.umd.min.js"></script>
+    <script src="js/fonts/Seshat-normal.js"></script>
+    <script src="js/fonts/Ferrum-normal.js"></script>
+
+    <script src="js/cardprinter.js"></script>
+    <script src="js/svg.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/cardtools.js"></script>
+    <script src="js/cardpainter.js"></script>
+    <script src="js/deckpainter.js"></script>
+    
+    <script src="js/printshop.js"></script>
+    <script src="js/testarea.js"></script>
+
+
+</head>
+<body onload="onl()">
+    <div style="position: absolute;left: -1000px;">
+        <div style="font-family: Seshat;">Font loaded</div>
+        <div style="font-family: Times; font-weight: bold;">Font loaded</div>
+        <div style="font-family: Ferrum;">Font loaded</div>
+    </div>
+</body>
+<script>
+
+function onl() {
+
+    const
+        ENV={
+            templatesRoot:"svg/",
+            databaseRoot:"database/"
+        };
+
+    let
+        printShop = new PrintShop(ENV);
+
+    printShop.run(document.body);
+
+}
+
+</script>
+</html>

@@ -1,0 +1,52 @@
+{
+  "index": [
+    {
+      "meta": {
+        "id": "GOSFCORE",
+        "language": "EN",
+        "version": "1.0",
+        "type": "full",
+        "cardsCount": 81,
+        "dateCreated": "20231107",
+        "dateUpdated": "20231212",
+        "name": "Generals Of Stampadia Full Core Set",
+        "description": "A set of 60 Units, 60 Places, 60 Events, and a quick reference card to play the game's full version.",
+        "flavorText": "The Sacred Printer will keep printing Units and send them against you, so you've to hold your ground... By stealing its paper and printing your army!",
+        "author": "KesieV",
+        "authorLink": "https://www.kesiev.com/"
+      }
+    },
+    {
+      "meta": {
+        "id": "GOSLCORE",
+        "language": "EN",
+        "version": "1.0",
+        "type": "full",
+        "cardsCount": 25,
+        "dateCreated": "20231107",
+        "dateUpdated": "20231212",
+        "name": "Generals Of Stampadia Lite Core Set",
+        "description": "A set of 24 Units, 24 Places, and a quick reference card to play the game's lite version.",
+        "flavorText": "The Sacred Printer will keep printing Units and send them against you, so you've to hold your ground... By stealing its paper and printing your army!",
+        "author": "KesieV",
+        "authorLink": "https://www.kesiev.com/"
+      }
+    },
+    {
+      "meta": {
+        "id": "KSV247SUP",
+        "language": "EN",
+        "version": "1.0",
+        "type": "expansion",
+        "cardsCount": 9,
+        "dateCreated": "20231128",
+        "dateUpdated": "20231206",
+        "name": "24/7 Tech Support",
+        "description": "A small set of 6 Units, Places, and Events that manipulates the Ink level and provides temporary boosts.",
+        "flavorText": "The Sacred Printer is printing a tech support team to refill its ink and paper and fix its jams! Steal it before it's too late and turn it into your special troop!",
+        "author": "KesieV",
+        "authorLink": "https://www.kesiev.com/"
+      }
+    }
+  ]
+}

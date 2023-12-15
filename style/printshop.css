@@ -1,0 +1,371 @@
+.shoproot {
+    line-height: 22px;
+    font-family: Seshat, sans-serif;
+    font-size:16px;
+    color: #333;
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background-color: rgba(45,45,45,1);
+    overflow: hidden;
+}
+
+.shoproot A {
+    color:#f00;
+}
+
+.shoproot P {
+    margin:0 0 10px 0;
+}
+
+.shoproot .dragging {
+    position: absolute;
+    left:5px;
+    right:5px;
+    top:5px;
+    bottom:5px;
+    z-index: 200;
+    border:1px dashed #f00;
+    background-color: rgba(255, 204, 204,0.8);
+    border-radius: 5px;
+}
+
+.shoproot .dragging .content {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    font-weight: bold;
+}
+
+.shoproot .side {
+    position: absolute;
+    top:0px;
+    bottom:0px;
+    width:50%;
+}
+
+.shoproot .side.left {
+    left:0px;
+}
+
+.shoproot .side.right {
+    top:0px;
+    right:0px;
+}
+
+.shoproot .side.right .tabbar {
+    user-select: none;
+    white-space: nowrap;
+    position: absolute;
+    left:0;
+    right:0;
+    top:5px;
+    height:40px;
+    text-align: center;
+    z-index: 100;
+}
+
+.shoproot .tabbar .item:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.shoproot .tabbar .item:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.shoproot .tabbar .item {
+    padding:0 10px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    border:1px solid #a0a0a0;
+    background-color: #fefefe;
+    box-shadow: 0px 2px 2px #333;
+}
+
+.shoproot .tabbar .item.selected {
+    background-color:#fedede;
+    font-weight: bold;
+    border-color: #f00;
+}
+
+.shoproot .list {
+    position: absolute;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    border:1px solid #a0a0a0;
+    overflow-x: none;
+    overflow-y: auto;
+    background-color: #fefefe;
+    margin:5px;
+    padding:2px;
+}
+
+.shoproot .list .recapheader {
+    background-color: #ccc;
+    padding:40px 10px 10px 10px;
+}
+
+.shoproot .list .body {
+    padding:10px;
+}
+
+.shoproot .list .body .header {
+    margin:10px 20px 20px 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom:1px solid #000;
+}
+
+.shoproot .list .body .logo {
+    margin:20px 20px 40px 20px;
+    height:150px;
+    background-image: url(../images/printshop/logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.shoproot .list .tips, .shoproot .list .warntips {
+    margin:20px;
+    padding:10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.shoproot .list .warntips {
+    text-align: left;
+    border:1px solid #f00;
+    background-color: #ffcccc;
+}
+
+.shoproot .list .tips {
+    border:1px solid #a0a0a0;
+    background-color: #ccc;
+}
+
+.shoproot .list .row {
+    position: relative;
+    margin:5px;
+    padding:5px;
+    border:1px solid #ccc;
+    background-color: #fefefe;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px #ccc;
+}
+
+.shoproot .list .row.selectable {
+    user-select: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.shoproot .list .row.selected {
+    border-color: #f00;
+    background-color:#fedede;
+}
+
+.shoproot .list .row .icon {
+    position: absolute;
+    left:5px;
+    top:5px;
+    bottom:5px;
+    width:60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.shoproot .list .card {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    margin:5px;
+    padding:5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.shoproot .list .card.selected {
+    background-color:#fedede;
+    border-color: #f00;
+}
+
+.shoproot .list .card .icon {
+    position: absolute;
+    left:5px;
+    top:5px;
+    bottom:5px;
+    width:40px;
+    text-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.shoproot .list .card .icon.unit {
+    background-image: url(../images/printshop/icon-unit.png);
+}
+
+.shoproot .list .card .icon.event {
+    background-image: url(../images/printshop/icon-event.png);
+}
+
+.shoproot .list .card .icon.text {
+    background-image: url(../images/printshop/icon-text.png);
+}
+
+.shoproot .list .card .name {
+    margin-left: 45px;
+}
+
+.shoproot .list .code {
+    font-size: 12px;
+    color:#cccccc;
+    margin-right:10px;
+}
+
+.shoproot .list .selected .code {
+    color:#f99;
+}
+
+.shoproot .list .row .icon.expansion {
+    background-image: url(../images/printshop/icon-expansion.png);
+}
+
+.shoproot .list .row .icon.full {
+    background-image: url(../images/printshop/icon-full.png);
+}
+
+.shoproot .list .row .title, .list .row .description {
+    padding-left:65px;
+}
+
+.shoproot .title .name {
+    margin-right:10px;
+}
+
+.shoproot .list .row .title {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow-x:hidden;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #a0a0a0;
+    margin:5px;
+    padding-bottom: 5px;
+}
+
+.shoproot .list .row .title .bullet {
+    border-radius: 5px;
+    padding:4px;
+    font-size: 12px;
+    background-color:#ccc;
+    border:1px solid #ccc;
+    margin-right:10px;
+}
+
+.shoproot .list .row.selected .title .bullet {
+    background-color:#f99;
+    border-color:#f99;
+}
+
+.shoproot .list .row .title:firs {
+    margin-left:0px;
+}
+
+.shoproot .list .row .title .bullet.outlined {
+    color:#ccc;
+    background-color: transparent;
+}
+
+.shoproot .list .row.selected .title .bullet.outlined {
+    color:#f99;
+}
+
+.shoproot .list .row .description {
+    color:#a0a0a0;
+    white-space: nowrap;
+    overflow-x:hidden;
+    text-overflow: ellipsis;
+    margin:5px;
+}
+
+.shoproot .list.prints {
+    top:20px;
+}
+
+.shoproot .list.prints .row .header {
+    position: relative;
+}
+
+.shoproot .list.prints .row .table {
+    position: relative;
+    padding:10px;
+}
+
+.shoproot .list .actionbutton {
+    font-weight: bold;
+    user-select: none;
+    text-align: center;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #a0a0a0;
+    background-color: #fefefe;
+    box-shadow: 0px 2px 2px #333;
+    cursor: pointer;
+}
+
+.shoproot .tabletextrow {
+    font-style: italic;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.shoproot .tablerow .tablelabel {
+    font-weight: bold;
+    display: block;
+    width:30%;
+    float:left;
+    margin-bottom: 5px;
+}
+
+.shoproot .tablerow .tablevalue {
+    display: block;
+    width:70%;
+    float:right;
+    margin-bottom: 5px;
+}
+
+.shoproot .table .endtable {
+    clear:both;
+}
+
+@media (max-width: 600px) {
+        
+    .shoproot .side {
+        left:0px;
+        bottom:auto;
+        width:100%;
+        height:50%;;
+    }
+
+    .shoproot .side.left {
+        top:0px;
+        bottom: auto;
+    }
+
+    .shoproot .side.right {
+        top:50%;
+        left: auto;
+    }
+
+}

@@ -1,0 +1,224 @@
+@keyframes floating {
+    from { transform: translate(0,  0); }
+    50%  { transform: translate(0, -2vh); }
+    to   { transform: translate(0, 0); }    
+}
+
+.testroot {
+    font-family: seshat;
+    font-size:16px;
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #dedede;
+}
+
+.testroot .splashscreen {
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom: 0;
+}
+
+.testroot .splashscreen .content {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
+
+.testroot .splashscreen .content .logo {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    width:500px;
+    height:250px;
+    background-image: url('../images/testarea/card-back.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
+
+.testroot .button {
+    height:20px;
+    background-color: rgba(0,0,0,0.7);
+    color:#fff;
+    line-height: 20px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 5px;
+    padding:0 5px 0 5px;
+    cursor: pointer;
+}
+
+.testroot .card, .testroot .cardspace {
+    position: absolute;
+    width:247.65px;
+    height:171.6px;
+    border-radius: 10px;
+    border:1px solid #999;
+    background-color: #fff;
+    user-select: none;
+    overflow: hidden;
+    font-size:12px;
+}
+
+.testroot .card.full {
+    height:343.2px;
+}
+
+.testroot .card .layer {
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}
+
+.testroot .card.upsidedown .layer {
+    transform: rotate(180deg) translate(0,-100%);
+}
+
+.testroot .card .cardback {
+    position: absolute;
+    left:10px;
+    right:10px;
+    top:10px;
+    bottom:10px;
+    border:20px solid #ccc;
+    background-image: url('../images/testarea/card-back.png');
+    background-color: #ccc;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.testroot .cardspace {
+    height:343.2px;
+}
+
+.testroot .card .cardimage {
+    position: absolute;
+    left:-1px;
+    top:-1px;
+    background-color: #fff;
+    position: absolute;
+    width:249.65px;
+    height:345.2px;
+}
+
+.testroot .card .cardimage svg {
+    width:100%;
+    height:100%;
+}
+
+.testroot .cardspace {
+    color:#ddd;
+    border-style: dashed;
+    line-height: 264px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.testroot .cardspace.wide {
+    width:490px;
+    height:171.6px;
+    line-height:171.6px;
+}
+
+.testroot .cardspace.discardpile {
+    height:400px;
+    background-color: #fdd;
+    color:#f00;
+    line-height: 264px;
+}
+
+.testroot .movebutton, .testroot .discardshuffler {
+    font-size:12px;
+    overflow: hidden;
+    user-select: none;
+    position: absolute;
+    border:1px solid #999;
+    border-radius: 10px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.7);
+    color:#fff;
+    cursor: pointer;
+}
+
+.testroot .movebutton {
+    width: 60px;
+}
+
+.testroot .discardshuffler {
+    width: 180px;
+}
+
+.testroot .numbertoken {
+    position: absolute;
+    width:60px;
+    height:60px;
+    border-radius: 5px;
+    user-select: none;
+    overflow: hidden;
+    font-size:30px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.testroot .numbertoken.red {
+    border:1px solid #f99;
+    background-color: #c00;
+    color:#fff;
+}
+
+.testroot .numbertoken.green {
+    border:1px solid #9f9;
+    background-color: #0c0;
+    color:#000;
+}
+
+.testroot .numbertoken.blue {
+    border:1px solid #99f;
+    background-color: #00c;
+    color:#fff;
+}
+
+.testroot .numbertoken.white {
+    border:1px solid #fff;
+    background-color: #ccc;
+    color:#000;
+}
+
+.testroot .numbertoken.orange {
+    border:1px solid #fac591;
+    background-color: #eb8f34;
+    color:#fff;
+}
+
+.testroot .numbertoken .button {
+    width:20px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.testroot .numbertoken .minus {
+    position: absolute;
+    left:1px;
+    top:38px;
+}
+
+.testroot .numbertoken .plus {
+    position: absolute;
+    right:1px;
+    top:38px;
+}

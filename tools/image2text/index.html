@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Image2Text</title>
+    <script src="../../js/cardtools.js"></script>
+    <script src="../../js/config.js"></script>
+ 
+</head>
+<body onload="onl()">
+    <div style="position: absolute;left: -1000px;">
+        <div style="font-family: Seshat;">Font loaded</div>
+        <div style="font-family: Times; font-weight: bold;">Font loaded</div>
+        <div style="font-family: Ferrum;">Font loaded</div>
+    </div>
+</body>
+<script>
+
+function onl() {
+
+    let cardTools = new CardTools();
+    cardTools.showImageTextTool(document.body);
+
+}
+
+</script>
+</html>
