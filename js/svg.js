@@ -103,6 +103,19 @@ function SVG(template) {
 
     this.createNode = (type) => document.createElementNS("http://www.w3.org/2000/svg", type);
 
+    this.setPaperSize = (width,height) =>{
+        let svg=node.getElementsByTagName("svg")[0];
+        svg.setAttribute("width",width+"mm");
+        svg.setAttribute("height",height+"mm");
+        svg.setAttribute("viewBox","0 0 "+width+" "+height);
+    }
+
+    this.getPaperSize = () => {
+        let
+            svg=node.getElementsByTagName("svg")[0];
+        return [ parseFloat(svg.getAttribute("width")), parseFloat(svg.getAttribute("height")) ];
+    }
+
     this.setClassName = (node,className) => node.setAttribute("class",className);
 
     this.cloneNodeBy = (id,newid,x,y,w,h) => {

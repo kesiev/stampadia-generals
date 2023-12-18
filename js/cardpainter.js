@@ -608,6 +608,13 @@ function CardPainter(cardTools,template) {
 
     }
 
+    function renderCardBack(profile,svg,x,y,card) {
+
+        let cardPrinter=new CardPrinter(svg,profile.nodeId,x,y);
+        cardPrinter.startUpperSide();
+    
+    }
+
     function plainTextCard(card) {
 
         let out=[];
@@ -657,6 +664,10 @@ function CardPainter(cardTools,template) {
 
     this.paintCardAt=(profile,svg,x,y,card,drawId)=>{
         renderCard(profile,svg,x,y,card,drawId);
+    }
+
+    this.paintCardBackAt=(profile,svg,x,y,card)=>{
+        renderCardBack(profile,svg,x,y,card);
     }
 
     this.plainTextCard=(card)=>{

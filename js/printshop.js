@@ -136,25 +136,26 @@ function PrintShop(ENV) {
         
     });
 
-    function addStyleSelector(into,descriptionnode) {
+    function addSelector(list,listById,into,descriptionnode) {
+
         let
-            styleSelector=newNode("select",0,0,into);
+            selector=newNode("select",0,0,into);
         
-        deckPainter.PROFILES.forEach(profile=>{
-            let option=newNode("option",0,0,styleSelector)
+        list.forEach(profile=>{
+            let option=newNode("option",0,0,selector)
             option.innerHTML=profile.name;
             option.value=profile.id;
         });
         
-        styleSelector.onchange=()=>{
+        selector.onchange=()=>{
             let
-                profile=deckPainter.PROFILESBYID[styleSelector.value];
+                profile=listById[selector.value];
             descriptionnode.innerHTML=profile.description;
         }
 
-        styleSelector.onchange();
+        selector.onchange();
 
-        return styleSelector;
+        return selector;
     }
 
     function updatePrints() {
@@ -358,6 +359,26 @@ function PrintShop(ENV) {
                     newNode("div","endtable",0,table);
 
                     tableRow=newNode("div","tablerow",0,table);
+                    newNode("div","tablelabel","Card back",tableRow);
+                    let cardBackCell=newNode("div","tablevalue",0,tableRow);
+
+                    tableRow=newNode("div","tablerow",0,table);
+                    newNode("div","tablelabel",0,tableRow);
+                    let cardBackDescription=newNode("div","tablevalue",0,tableRow);
+
+                    newNode("div","endtable",0,table);
+
+                    tableRow=newNode("div","tablerow",0,table);
+                    newNode("div","tablelabel","Paper",tableRow);
+                    let paperCell=newNode("div","tablevalue",0,tableRow);
+
+                    tableRow=newNode("div","tablerow",0,table);
+                    newNode("div","tablelabel",0,tableRow);
+                    let paperDescription=newNode("div","tablevalue",0,tableRow);
+
+                    newNode("div","endtable",0,table);
+
+                    tableRow=newNode("div","tablerow",0,table);
                     newNode("div","tablelabel","Hide card ID",tableRow);
                     let
                         hideCardIdCell=newNode("div","tablevalue",0,tableRow),
@@ -377,14 +398,22 @@ function PrintShop(ENV) {
                     newNode("div","endtable",0,table);
 
                     let
-                        styleSelector=addStyleSelector(styleCell,styleDescription),
+                        styleSelector=addSelector(deckPainter.PROFILES,deckPainter.PROFILESBYID,styleCell,styleDescription),
+                        cardBackSelector=addSelector(deckPainter.CARDBACKS,deckPainter.CARDBACKSBYID,cardBackCell,cardBackDescription),
+                        paperSelector=addSelector(deckPainter.PAPERS,deckPainter.PAPERSBYID,paperCell,paperDescription),
                         actionButton=newNode("div","actionbutton","Download",row);
 
                     actionButton.onclick=()=>{
                         let
                             profile=deckPainter.PROFILESBYID[styleSelector.value],
+                            cardBacks=deckPainter.CARDBACKSBYID[cardBackSelector.value],
+                            paper=deckPainter.PAPERSBYID[paperSelector.value],
                             mergedDeck=cardTools.mergeDecks(selectedData,selectedCards);
-                        deckPainter.paintCards(profile,mergedDeck,hideCardId);
+                        deckPainter.paintCards({
+                            profile:profile,
+                            cardBacks:cardBacks,
+                            paper:paper
+                        },mergedDeck,hideCardId);
                         deckPainter.downloadPdfAs(mergedDeck.filename+"-"+profile.id+".pdf");
                     }
 
@@ -409,7 +438,7 @@ function PrintShop(ENV) {
                     newNode("div","endtable",0,table);
 
                     let
-                        styleSelector=addStyleSelector(styleCell,styleDescription),
+                        styleSelector=addSelector(deckPainter.PROFILES,deckPainter.PROFILESBYID,styleCell,styleDescription),
                         actionButton=newNode("div","actionbutton","Test",row);
 
                     

@@ -1077,7 +1077,9 @@ function CardTools(ENV) {
             let
                 deckPainter=new DeckPainter(this,template),
                 profile=deckPainter.PROFILESBYID[profileid || "DEF"];
-            deckPainter.paintCards(profile,cards);
+            deckPainter.paintCards({
+                profile:profile
+            },cards);
             deckPainter.renderPrintPreview(root);
         });
     }
@@ -1144,7 +1146,9 @@ function CardTools(ENV) {
                         let
                             pdfFilename=filename+"-"+profile.id+".pdf";
 
-                        deckPainter.paintCards(profile,newCards);
+                        deckPainter.paintCards({
+                            profile:profile
+                        },newCards);
                         let
                             preview=makeCollapsableBox(printRoot,"Show/hide print preview ("+deckPainter.pages.length+" page(s))","");
                         createOnClickLink(printRoot,"Test",(isFull ? "Open full deck in virtual table" : "Open expansion set in virtual table with a lite core set")+" (ESC to quit)",()=>{

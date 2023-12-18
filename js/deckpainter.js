@@ -48,14 +48,83 @@ function DeckPainter(cardTools,template) {
                 textCardCodeColor:"#000000"
             },
         ],
-        PROFILESBYID={};
+        CARDBACKS=[
+            {
+                id:"none",
+                name:"Do not print",
+                description:"Do not print the cards back. All the game cards have the same back so you can keep them blank to spare some ink.",
+            },{
+                id:"default",
+                name:"Default",
+                description:"Prints the default cards back for each page, with the game logo on a gray background.",
+                nodeId:"cardBackDefault"
+            }
+        ],
+        PAPERS=[
+            {
+                id:"A4",
+                name:"A4",
+                description:"210,0mm x 297,0mm",
+                width:210,
+                height:297,
+                marginTop:0,
+                marginBottom:0,
+                marginRight:0,
+                marginLeft:0
+            },{
+                id:"A3",
+                name:"A3",
+                description:"297,0mm x 420,0mm",
+                width:297,
+                height:420,
+                marginTop:0,
+                marginBottom:0,
+                marginRight:0,
+                marginLeft:0
+                
+            },{
+                id:"USLegal",
+                name:"US Legal",
+                description:"8,5in x 14,0in",
+                width:215.9,
+                height:355.6,
+                marginTop:0,
+                marginBottom:0,
+                marginRight:0,
+                marginLeft:0
+            },{
+                id:"USLetter",
+                name:"US Letter",
+                description:"8,5in x 11,0in",
+                width:215.9,
+                height:279.3,
+                marginTop:0,
+                marginBottom:0,
+                marginRight:0,
+                marginLeft:0
+            }
+        ]
+        PROFILESBYID={},
+        CARDBACKSBYID={},
+        PAPERSBYID={};
 
     PROFILES.forEach(profile=>{
         PROFILESBYID[profile.id]=profile;
-    })
+    });
+    CARDBACKS.forEach(cardbacks=>{
+        CARDBACKSBYID[cardbacks.id]=cardbacks;
+    });
+    PAPERS.forEach(paper=>{
+        PAPERSBYID[paper.id]=paper;
+    });
 
     this.PROFILES=PROFILES;
     this.PROFILESBYID=PROFILESBYID;
+    this.CARDBACKS=CARDBACKS;
+    this.CARDBACKSBYID=CARDBACKSBYID;
+    this.PAPERS=PAPERS;
+    this.PAPERSBYID=PAPERSBYID;
+
     this.pages=[];
 
     let
@@ -68,7 +137,8 @@ function DeckPainter(cardTools,template) {
         if (!doc)
             doc = new jspdf.jsPDF({
                 orientation: 'p',
-                unit: 'mm'
+                unit: 'mm',
+                format: pages[0].getPaperSize()
             });
 
         if (pages[id]) {
@@ -135,31 +205,62 @@ function DeckPainter(cardTools,template) {
         return out;
     }
 
-    this.paintCards=(profile,cards,hideId)=>{
+    this.paintCards=(settings,cards,hideId)=>{
         let
-            borderTop= (SHEETHEIGHT-(CARDHEIGHT*3+CARDSPACING*2))/2,
-            borderLeft= (SHEETWIDTH-(CARDWIDTH*3+CARDSPACING*2))/2,
+            paper = settings.paper || PAPERSBYID.A4,
+            printableWidth = paper.width-paper.marginLeft-paper.marginRight,
+            printableHeight = paper.height-paper.marginTop-paper.marginBottom,
+            cardColumns = Math.floor(printableWidth/CARDWIDTH),
+            cardRows = Math.floor(printableHeight/CARDHEIGHT),
+            cardsPerPage = cardColumns * cardRows,
+            borderTop = paper.marginTop+((printableHeight-(CARDHEIGHT*cardRows))/2),
+            borderLeft = paper.marginLeft+((printableWidth-(CARDWIDTH*cardColumns))/2),
             cardWidth = CARDWIDTH+CARDSPACING,
             cardHeight = CARDHEIGHT+CARDSPACING,
-            cardsPages=Math.ceil(cards.deck.length/9);
+            cardsPages = Math.ceil(cards.deck.length/cardsPerPage),
+            cardBacks = settings.cardBacks && (settings.cardBacks.id != "none") ? settings.cardBacks : 0;
 
         this.pages=[];
         for (let i=0;i<cardsPages;i++) {
 
             let
-                from=i*9,
+                backs=[],
+                from=i*cardsPerPage,
                 svg=new SVG(template);
 
-            for (let j=0;j<9;j++) {
+            svg.setPaperSize(paper.width,paper.height);
+
+            for (let j=0;j<cardsPerPage;j++) {
                 let card=cards.deck[from+j];
                 if (card) {
                     let
-                        x=j%3,
-                        y=Math.floor(j/3),
+                        x=j%cardColumns,
+                        y=Math.floor(j/cardColumns),
                         dx=borderLeft+(cardWidth*x),
                         dy=borderTop+(cardHeight*y);
-                    cardPainter.paintCardAt(profile,svg,dx,dy,card,hideId ? 0 : cards.meta.id);
+                    cardPainter.paintCardAt(settings.profile,svg,dx,dy,card,hideId ? 0 : cards.meta.id);
+
+                    if (cardBacks)
+                        backs.push({
+                            x:dx,
+                            y:dy,
+                            card:card
+                        });
                 }
+            }
+
+            if (backs.length) {
+
+                svg.finalize();
+                this.pages.push(svg);
+
+                svg=new SVG(template);
+                svg.setPaperSize(paper.width,paper.height);
+
+                backs.forEach(back=>{
+                    cardPainter.paintCardBackAt(cardBacks,svg,back.x,back.y,back.card);
+                })
+
             }
 
             svg.finalize();
