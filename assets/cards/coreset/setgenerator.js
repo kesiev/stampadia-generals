@@ -14,7 +14,7 @@ function SetGenerator(ENV,cardTools,isFullDeck) {
         DECK_LANGUAGE="EN",
         DECK_ID=isFullDeck ? CONFIG.fullCoreDeckId : CONFIG.liteCoreDeckId,
         DECK_TYPE="full",
-        DECK_VERSION="1.0",
+        DECK_VERSION="1.01",
         DECK_CREATED="20231107",
         DECK_NAME=CONFIG.title+(isFullDeck?" Full":" Lite")+" Core Set",
         DECK_DESCRIPTION=
