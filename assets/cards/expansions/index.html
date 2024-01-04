@@ -41,6 +41,7 @@
     <div id="menu">
         <ul>
             <li><span class="link" onclick="generate('KSV247SUP')">Generate KSV247SUP</span></li>
+            <li><span class="link" onclick="generate('KSVELEGEM')">Generate KSVELEGEM</span></li>
         </ul>
     </div>
     <div id="container"></div>
@@ -72,6 +73,7 @@
                     NO_LIFE=1,
                     SUPPORT_ATTACK=2,
                     SUPPORT_LIFE=2,
+                    ELEMENT_BOOST="Infuse with this Element.",
                     EVENT_UNIT_DISCARD="On defeat: add this card to {CONFIG.placeStack}.",
                     PLACES_REINFORCEMENTS=[
                         {
@@ -93,6 +95,26 @@
                             ]
                         }
                     ],
+                    PLACES_ELEMENTALREINFORCEMENTS=[
+                        {
+                            boosts:[
+                                { level:PLACE_LEVEL, description:ELEMENT_BOOST, symbol:"fire", symbolAmount:1 },
+                                { level:PLACE_LEVEL, description:ELEMENT_BOOST, symbol:"water", symbolAmount:1 },
+                                { level:PLACE_LEVEL, description:ELEMENT_BOOST, symbol:"air", symbolAmount:1 },
+                                { level:PLACE_LEVEL, description:ELEMENT_BOOST, symbol:"earth", symbolAmount:1 },
+                                { level:PLACE_LEVEL },
+                                { level:PLACE_LEVEL }
+                            ],
+                            bodies:[
+                                { name:"Horde", description: "Print a level {level-2} Unit on the {CONFIG.incomingRow} 2nd, 3rd, and 4th column." },
+                                { name:"Horde", description: "Print a level {level-2} Unit on the {CONFIG.incomingRow} 1st, 3rd, and 4th column." },
+                                { name:"Horde", description: "Print a level {level-2} Unit on the {CONFIG.incomingRow} 1st, 2nd, and 4th column." },
+                                { name:"Horde", description: "Print a level {level-2} Unit on the {CONFIG.incomingRow} 1st, 2nd, and 3rd column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 1st and 2nd column." },
+                                { name:"Reinforcements", description: "Print a level {level} Unit on the {CONFIG.incomingRow} 3rd and 4th column." },
+                            ]
+                        }
+                    ],
                     ILLUSTRATION_INDEX={
                         ink_reseller:{x:6,y:7},
                         paper_supplier:{x:7,y:7},
@@ -103,6 +125,18 @@
                         paper_company:{x:2,y:8},
                         fixit_punch:{x:3,y:8},
                         fixit_kick:{x:4,y:8},
+                        fire_gem:{x:5,y:8},
+                        water_gem:{x:6,y:8},
+                        air_gem:{x:7,y:8},
+                        earth_gem:{x:8,y:8},
+                        black_hole:{x:9,y:8},
+                        big_bang:{x:0,y:9},
+                        fever:{x:1,y:9},
+                        burnout:{x:2,y:9},
+                        elemental_drain:{x:3,y:9},
+                        elemental_fanatic:{x:4,y:9},
+                        elemental_break:{x:5,y:9},
+                        elemental_fusion:{x:6,y:9}
                     };
 
 
@@ -120,7 +154,7 @@
                     case "KSV247SUP":{
                         cards.meta={
                             id: set,
-                            version: "1.0",
+                            version: "1.01",
                             language:"EN",
                             type: "expansion",
                             dateCreated: "20231128",
@@ -227,6 +261,134 @@
                                 name:"Fix-It Kick",
                                 description:"{level} is greater than 4: draw 1 card.",
                                 flavorText:"\"You don't need an expert. You need a well-placed kick.\""
+                            }
+                        ]);
+                        break;
+                    }
+                    case "KSVELEGEM":{
+                        cards.meta={
+                            id: set,
+                            version: "1.0",
+                            language:"EN",
+                            type: "expansion",
+                            dateCreated: "20240104",
+                            dateUpdated: cardTools.dateToString(),
+                            name: "Elemental Gems",
+                            description: "A small set of 6 Units, Places, and Events that manipulates the Elements.",
+                            flavorText: "Fire, water, air, and earth are about to invade the battlefield! Use the Elemental Gems to awaken your Unit powers, create Big Bangs and Black Holes to bend the forces of nature, and more!",
+                            author: "KesieV",
+                            authorLink: "https://www.kesiev.com/"
+                        };
+                        rawUnits.push({
+                            boosts:[
+                                // --- Lv.1
+                                [
+                                    { trigger:"onAttack", condition:"{fire}{fire}{fire}", description:"+1{attack}", symbol:"fire", symbolAmount:2, doNotMerge:true }
+                                ],
+                                [
+                                    { trigger:"onLife", condition:"{water}{water}{water}", description:"+1{life}", symbol:"water", symbolAmount:2, doNotMerge:true }
+                                ],
+                                [
+                                    { trigger:"onAttack", condition:"{air}{air}{air}", description:"+1{attack}", symbol:"air", symbolAmount:2, doNotMerge:true }
+                                ],
+                                [
+                                    { trigger:"onLife", condition:"{earth}{earth}{earth}", description:"+1{life}", symbol:"earth", symbolAmount:2, doNotMerge:true }
+                                ],
+                                // --- Lv.2
+                                [
+                                    { life:1, attack:1 }
+                                ],
+                                [
+                                    { life:1, attack:1 }
+                                ]
+                            ],
+                            bodies:[
+                                // --- Lv.1
+                                [
+                                    { level:1, illustration:"fire_gem", name:"Fire Gem", attack:NO_LIFE, life:NO_LIFE, attack:NO_ATTACK, area:true, trigger:"onAll", description:"Infuse {sides} with {fire}" }
+                                ], 
+                                [
+                                    { level:1, illustration:"water_gem", name:"Water Gem", life:NO_LIFE, attack:NO_ATTACK, area:true, trigger:"onAll", description:"Infuse {sides} with {water}" }
+                                ], 
+                                [
+                                    { level:1, illustration:"air_gem", name:"Air Gem", life:NO_LIFE, attack:NO_ATTACK, area:true, trigger:"onAll", description:"Infuse {sides} with {air}" }
+                                ], 
+                                [
+                                    { level:1, illustration:"earth_gem", name:"Earth Gem", life:NO_LIFE, attack:NO_ATTACK, area:true, trigger:"onAll", description:"Infuse {sides} with {earth}" }
+                                ], 
+                                // --- Lv.2
+                                [
+                                    { level:2, illustration:"black_hole", name:"Black Hole", life:NO_LIFE, attack:2, trigger:"onAll", description:"Infuse with {front} Unit Cards Elements." }
+                                ],
+                                [
+                                    { level:2, illustration:"big_bang", name:"Big Bang", life:2, attack:1, trigger:"onAll", description:"Infuse with {fire}, {water}, {air}, and {earth}" }
+                                ]
+                            ]
+                        });
+                        rawPlaces = rawPlaces.concat(PLACES_ELEMENTALREINFORCEMENTS);
+                        rawEvents.push([
+                            {
+                                level:-1,
+                                illustration:"burnout",
+                                name:"Burnout",
+                                description:"Merge this card with 1 Enemy Unit. "+EVENT_UNIT_DISCARD,
+                                boostTrigger:"onLife",
+                                boostCondition:"{fire}{fire}",
+                                boostDescription:"-{x}{life}",
+                                flavorText:"\"Go on. It doesn't matter.\"",
+                                attack:0,
+                                life:0,
+                            },{
+                                level:-1,
+                                illustration:"fever",
+                                name:"Fever",
+                                description:"Merge this card with 1 Enemy Unit. "+EVENT_UNIT_DISCARD,
+                                boostTrigger:"onAttack",
+                                boostCondition:"{water}{water}",
+                                boostDescription:"-{x}{attack}",
+                                flavorText:"\"My arms feel so heavy...\"",
+                                attack:0,
+                                life:0,
+                            }
+                        ]);
+                        rawEvents.push([
+                            {
+                                level:-1,
+                                illustration:"elemental_drain",
+                                name:"Elemental Drain",
+                                description:"Merge this card with 1 Enemy Unit. "+EVENT_UNIT_DISCARD,
+                                boostTrigger:"onFront",
+                                boostDescription:"Infuse {front} w/this Unit Cards Elem.",
+                                boostLife:-1,
+                                flavorText:"\"I may... need some sleep.\"",
+                                attack:0,
+                                life:0,
+                            },{
+                                level:2,
+                                illustration:"elemental_fanatic",
+                                name:"Elemental Fanatic",
+                                description:"Merge this card with 1 of your Units. "+EVENT_UNIT_DISCARD,
+                                boostTrigger:"onFront",
+                                boostDescription:"Infuse {front} w/this Unit Cards Elem.",
+                                flavorText:"\"God of the Elements, take my soul!\"",
+                                attack:0,
+                                life:0,
+                            }
+                        ]);
+                        rawEvents.push([
+                            {
+                                level:2,
+                                illustration:"elemental_break",
+                                name:"Elemental Break",
+                                description:"Select a level 2 Place Stack card infusing any Element: discard it.",
+                                flavorText:"\"I am the God of the Elements!\""
+                            },{
+                                level:1,
+                                illustration:"elemental_fusion",
+                                name:"Elemental Fusion",
+                                description:"Select 1 Unit's Unit Card infusing any Element: discard it, replace it with this card. "+EVENT_UNIT_DISCARD,
+                                boostAttack:1,
+                                boostLife:1
                             }
                         ]);
                         break;

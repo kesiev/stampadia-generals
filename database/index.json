@@ -4,11 +4,11 @@
       "meta": {
         "id": "GOSFCORE",
         "language": "EN",
-        "version": "1.0",
+        "version": "1.01",
         "type": "full",
         "cardsCount": 81,
         "dateCreated": "20231107",
-        "dateUpdated": "20231212",
+        "dateUpdated": "20231229",
         "name": "Generals Of Stampadia Full Core Set",
         "description": "A set of 60 Units, 60 Places, 60 Events, and a quick reference card to play the game's full version.",
         "flavorText": "The Sacred Printer will keep printing Units and send them against you, so you've to hold your ground... By stealing its paper and printing your army!",
@@ -20,11 +20,11 @@
       "meta": {
         "id": "GOSLCORE",
         "language": "EN",
-        "version": "1.0",
+        "version": "1.01",
         "type": "full",
         "cardsCount": 25,
         "dateCreated": "20231107",
-        "dateUpdated": "20231212",
+        "dateUpdated": "20231229",
         "name": "Generals Of Stampadia Lite Core Set",
         "description": "A set of 24 Units, 24 Places, and a quick reference card to play the game's lite version.",
         "flavorText": "The Sacred Printer will keep printing Units and send them against you, so you've to hold your ground... By stealing its paper and printing your army!",
@@ -36,14 +36,30 @@
       "meta": {
         "id": "KSV247SUP",
         "language": "EN",
-        "version": "1.0",
+        "version": "1.01",
         "type": "expansion",
         "cardsCount": 9,
         "dateCreated": "20231128",
-        "dateUpdated": "20231206",
+        "dateUpdated": "20231229",
         "name": "24/7 Tech Support",
         "description": "A small set of 6 Units, Places, and Events that manipulates the Ink level and provides temporary boosts.",
         "flavorText": "The Sacred Printer is printing a tech support team to refill its ink and paper and fix its jams! Steal it before it's too late and turn it into your special troop!",
+        "author": "KesieV",
+        "authorLink": "https://www.kesiev.com/"
+      }
+    },
+    {
+      "meta": {
+        "id": "KSVELEGEM",
+        "language": "EN",
+        "version": "1.0",
+        "type": "expansion",
+        "cardsCount": 9,
+        "dateCreated": "20240104",
+        "dateUpdated": "20240104",
+        "name": "Elemental Gems",
+        "description": "A small set of 6 Units, Places, and Events that manipulates the Elements.",
+        "flavorText": "Fire, water, air, and earth are about to invade the battlefield! Use the Elemental Gems to awaken your Unit powers, create Big Bangs and Black Holes to bend the forces of nature, and more!",
         "author": "KesieV",
         "authorLink": "https://www.kesiev.com/"
       }
