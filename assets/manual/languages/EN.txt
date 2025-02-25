@@ -1,6 +1,6 @@
 {
   "placeholders":{
-    "manualVersion":"0.1",
+    "manualVersion":"0.2",
     "gameShortTitle":"GOS",
     "place":"Stampadia",
     "thanks":"**Bianca**, **Preuk**, and the **Discord** and **BGG** defenders of Stampadia for sharing their efforts and ideas",
@@ -8,6 +8,7 @@
     "print-shop":"the Print Shop",
 
     "any-counter":"a dice (or any other counter)",
+    "counter":"counter",
 
     "set-core":"Core Set",
     "set-core-plural":"Core Sets",
@@ -47,6 +48,9 @@
 
     "unit":"Unit",
     "unit-plural":"Units",
+
+    "pressure":"Pressure",
+    "depressurize":"depressurize",
 
     "phase-check":"Check Phase",
     "phase-play":"Play Phase",
@@ -184,7 +188,7 @@ Anytime you've to **draw a {card-unit}**, draw it from the top of {deck-printer}
 
 The 4 {config-spacePlural} below the lined-up horizontal cards or tokens form **the {config-playerRow}**: you'll play your {unit-plural} here {symbol 5}. Right over the line, there is **the {config-frontRow}** {symbol 6}: {enemy} {unit-plural} will attack your {unit-plural} on the {config-playerRow} from there and vice versa.
 
-All {unit-plural} on the same row are **{config-allyUnit}**, the other row is **the {config-opposingRow}**, and all {unit-plural} in the {config-opposingRow} are **{config-enemyUnit}**.
+All {unit-plural} on the same row are **{config-allyUnit}**, the other row is **the {config-opposingRow}**, and all {unit-plural} in the {config-opposingRow} are **{config-enemyUnit}**. A {unit} is not its own {config-allyUnit}.
 
 Behind the {config-frontRow} there is **the {config-incomingRow}** {symbol 7}: these are {enemy}'s freshly printed {unit-plural}. They won't have any effect but they will advance the next turn to the {config-frontRow}, when the {config-space} in front of them will be empty.
 
@@ -192,7 +196,7 @@ Near the battlefield {config-playerRow} there is **the {shield-area}** {symbol 8
 
 Under {deck-printer}, there will be **the {config-placeStack}** {symbol 9}, a vertical {stack} of cards that keeps track of {enemy} consumed ink and special effects that affect the battlefield.
 
-Pick {any-counter}, set it to 3, and put it on the right of {deck-printer} {symbol 10}. It keeps track of **the {level-ink}** ({symbol l}) that limits the battle length and intensity. If it's your first game, set the {level-ink} to 2 instead.
+Pick {any-counter}, set it to 3, and put it on the right of {deck-printer} {symbol 10}. It keeps track of **the {level-ink}** ({symbol l}) that limits the battle length and intensity. If it's your first game, set the {level-ink} to 2 instead. This {counter} will also move along the {config-placeStack} to keep track of **{enemy} {pressure}** level: when it reaches its maximum, it will **{depressurize}** eliminating all of your {unit-plural}!
 
 Finally, draw 5 {card-unit-plural} to form your starting hand. Ready for the battle?
 
@@ -211,7 +215,7 @@ No {card-event-plural}? Don't worry: you will face the threat alone! {card-event
 Every turn follows these 6 phases:
 
 {listStart}
-**{phase-check}**: Check the winning or losing conditions and add a {card-place} to the {config-placeStack}.
+**{phase-check}**: Check the winning or losing conditions and add a {card-place} to the {config-placeStack} or increase the {pressure}.
 {listItemNext}
 **{phase-play}**: You will play cards from your hand on the {config-playerRow} or decrease your {config-life} to steal {card-unit-plural} from {deck-printer}.
 {listItemNext}
@@ -234,13 +238,27 @@ Repeat these phases until **you exhaust {enemy}** and win or **you run out of {c
 
 First, check the {level-place}: if it's lower than the current {level-ink} you will **evolve the {config-placeStack}**, or you will **check the battle end conditions instead**. If there is no {config-placeStack}, {level-place} is 0.
 
-To **evolve the {config-placeStack}** draw **one** new {card-place}, add it to the {config-placeStack}, and follow the new card instructions. {card-place-plural:capital} often ask to **{print} level** {symbol l} **{unit-plural} somewhere**: to do that, check if the required {config-space} is empty and create a new {stack} of {card-unit-plural} adding them until {level-stack} **reaches or surpasses** the current {level-ink} ({symbol l}). After following the {card-place}, **go on to the {phase-play}**.
+To **evolve the {config-placeStack}** draw **one** new {card-place}, add it to the {config-placeStack}, and follow the new card instructions. {card-place-plural:capital} often ask to **{print} level** {symbol l} **{unit-plural} somewhere**: to do that, check if the required {config-space} in the {config-incomingRow} is empty and create a new {stack} of {card-unit-plural} adding them until {level-stack} **reaches or surpasses** the current {level-ink} ({symbol l}). If the {config-space} is not empty, do not {print} in that {config-space}. After following the {card-place}, **go on to the {phase-play}**.
 
-To **check the battle end conditions**, check if there is any {unit} on the {config-incomingRow} or the {config-frontRow}: if yes **go on to the {phase-play}**, else **end the battle**.
+To **check the battle end conditions**, check if there is any {unit} on the {config-incomingRow} or the {config-frontRow}: if yes **increase the {pressure}**, else **end the battle**.
+
+To **increase the {pressure}**:
+
+{image push}
+
+{listStart}
+**If the {level-ink} {counter} is on the right of {deck-printer}**: move it on the first card of the {config-placeStack}.
+{listItemNext}
+**If the {level-ink} {counter} is on a card of the {config-placeStack} and there is another card below**: move the dice down on that card.
+{listItemNext}
+**If the {level-ink} {counter} is on a card of the {config-placeStack} and there are no more cards below**: discard all the {unit-plural} on the {config-playerRow} and move the dice back on the right of {deck-printer}.
+{listEnd}
+
+After increasing the {pressure}, go on to **the {phase-play}**.
 
 To **end the battle** discard all of the units on the {config-playerRow} and the {config-placeStack}. Now check the {level-ink}: if it's 6 **{enemy} is exhausted and you won**, else **start the next battle**.
 
-To **start the next battle** raise the {level-ink} by 1, **perform the {config-healingAction} twice**, and perform this whole {phase-check} again.
+To **start the next battle** raise the {level-ink} {counter} by 1, move it back on the right of {deck-printer}, **perform the {config-healingAction} twice**, and perform this whole {phase-check} again.
 
 # {phase-check}: {config-healingAction}
 
@@ -330,7 +348,7 @@ To {config-exhaust} a unit you've to **orient its bottom card horizontally**. To
 
 Some {unit-plural} can **{config-jump}** from their own {config-space} to another one in the same row. {config-jumpPlural:capital} are usually followed by a destination (i.e. "{config-jump} to highest {symbol sword-filled} {config-enemyUnit}" means the {config-space} in front of the {config-enemyUnit} with the highest {symbol sword-filled}) or a direction and an amount of spaces (i.e. "{config-jump} 2 {config-spacePlural} {symbol right}" means the 2nd space on the {unit} right).
 
-To do that, check the destination {config-space}: if it's empty, move the {config-jumpDoing} {unit} there. If the {config-space} isn't empty, **the {config-jump} is not performed**.
+To do that, check the destination {config-space}: if it's empty, move the {config-jumpDoing} {unit} there. If the {config-space} isn't empty, **the {config-jump} is not performed**. If multiple destinations are valid, you decide.
 
 # {phase-attack}: The {config-shieldPlural}
 
@@ -352,14 +370,14 @@ A single {skill} can be activated **just once per attack phase** but some {skill
 
 # {phase-attack}: Area {skill-plural}
 
-Some {skill-plural} may **affect other {unit-plural} on the battlefield** and are applied **at the beginning of their attack phase**:
+Some {skill-plural} may **affect other {unit-plural} on the battlefield** and are checked **at the beginning of their attack phase**:
 
 {listStart}
 **The {config-placeStack} {skill-plural}**: all {config-placeStack} {skill-plural} are applied **to all of the {unit-plural} on the battlefield**.
 {listItemNext}
-**The {symbol banner} {skill-plural}**: {card-unit-plural} {skill} effects with a long red banner on the left are applied **to all of the {unit-plural} on the battlefield**, both {config-allyUnitPlural} and {config-enemyUnitPlural}. {unit-plural:capital} on the {config-incomingRow} are **never active**, so their banner {skill} doesn't apply.
+**The {symbol banner} {skill-plural}**: {card-unit-plural} {skill} effects with a long red banner on the left are applied **to all of the {unit-plural} on the battlefield**: {config-allyUnitPlural}, {config-enemyUnitPlural}, and themselves. {unit-plural:capital} on the {config-incomingRow} are **never active**, so their banner {skill} doesn't apply.
 {listItemNext}
-**The {symbol front} {skill-plural}**: {symbol front} {skill-plural} effects are applied **on the {unit} on the {config-opposingRow}**, right before evaluating the effects on its cards.
+**The {symbol front} {skill-plural}**: {symbol front} {skill-plural} effects are applied **on the {unit} on the {config-opposingRow}**, when evaluating the effects and attributes on their cards.
 {listEnd}
 
 Area {skill-plural} are applied **even by {config-exhausted} {unit-plural}**.
