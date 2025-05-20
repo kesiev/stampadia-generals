@@ -14,11 +14,24 @@ const
     EMPTYLINESIZE=2,
     SYMBOLDISTANCE=9.5;
 
+let
+    SIZERATIO = 1,
+    ITALICSPACING = 0;
+
 function CardPrinter(svg,modelid,x,y) {
 
     let
         side=0,
-        containerNode=svg.getById(modelid);
+        containerNode=svg.getById(modelid),
+        root = svg.node.getElementsByTagName("svg")[0];
+        bboxWidth = root.getBBox().width;
+
+    // Firefox gets different sizes
+
+    if (bboxWidth>10000) {
+        SIZERATIO = 0.01;
+        ITALICSPACING = -1.4;
+    }
 
     function cloneNodeBy(into,id,newid,dx,dy,rotate,before) {
         let org,edgex=0,edgey=0,edgewidth=0,edge,ex,ey;
@@ -80,8 +93,10 @@ function CardPrinter(svg,modelid,x,y) {
     function measureNode(node) {
         let box=node.getBBox();
         return {
-            width:box.width,
-            height:box.height
+            x:box.x*SIZERATIO,
+            y:box.y*SIZERATIO,
+            width:box.width*SIZERATIO,
+            height:box.height*SIZERATIO
         };
     }
 
