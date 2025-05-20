@@ -16,7 +16,8 @@ const
 
 let
     SIZERATIO = 1,
-    ITALICSPACING = 0;
+    ITALICSPACING = 0,
+    ITALICTILT = 0.2;
 
 function CardPrinter(svg,modelid,x,y) {
 
@@ -30,7 +31,7 @@ function CardPrinter(svg,modelid,x,y) {
 
     if (bboxWidth>10000) {
         SIZERATIO = 0.01;
-        ITALICSPACING = -1.4;
+        ITALICSPACING = -0.2;
     }
 
     function cloneNodeBy(into,id,newid,dx,dy,rotate,before) {
@@ -110,6 +111,9 @@ function CardPrinter(svg,modelid,x,y) {
             normalTextNode=cloneNodeBy(0,orgTextNode,0,0,0),
             boldTextNode=cloneNodeBy(0,orgTextNode,0,0,0),
             italicTextNode=cloneNodeBy(0,orgTextNode,0,0,0),
+            nextWordSpacing=WORDSPACING,
+            wordWrap = true,
+            multiPage = false,
             word="",
             lines=[],
             lineId=-1,
@@ -147,6 +151,7 @@ function CardPrinter(svg,modelid,x,y) {
             span.setAttribute("style",span.getAttribute("style").replace(/font-size:[0-9\.]*/,"font-size:2.75"));
         }
 
+        
         let printWord=()=>{
             if (word) {
                 let node=0;
@@ -158,6 +163,23 @@ function CardPrinter(svg,modelid,x,y) {
                                 symbol:parts[1],
                                 size:measureSymbol(svg.getById(parts[1]))
                             }
+                            break;
+                        }
+                        case "sticker":{
+                            cloneNodeBy(page,svg.getById(parts[1]),0,pageX+parseFloat(parts[2]),pageY+parseFloat(parts[3]),0,!!parts[4]);
+                            break;
+                        }
+                        case "space":{
+                            node={
+                                size:{
+                                    width:parseFloat(parts[1]),
+                                    height:1
+                                }
+                            }
+                            break;
+                        }
+                        case "moveup":{
+                            cursorY-=parseFloat(parts[1]);
                             break;
                         }
                         case "bold":{
@@ -176,16 +198,60 @@ function CardPrinter(svg,modelid,x,y) {
                             italic=false;
                             break;
                         }
+                        case "tab":{
+                            let
+                                dx = width/2,
+                                distance = dx - cursorX;
+                            if ((minColSpacing === undefined) || (distance<minColSpacing))
+                                minColSpacing = distance;
+                            cursorX = width/2;
+                            break;
+                        }
+                        case "nowordwrap":{
+                            wordWrap = false;
+                            break;
+                        }
+                        case "wordwrap":{
+                            wordWrap = true;
+                            break;
+                        }
+                        case "nomultipage":{
+                            multiPage = false;
+                            break;
+                        }
+                        case "multipage":{
+                            multiPage = true;
+                            break;
+                        }
+                        case "left":
+                        case "right":
+                        case "center":{
+                            horizontalAlignment = parts[0];
+                            if (lines.length)
+                                lines[lines.length-1].horizontalAlignment = parts[0];
+                            break;
+                        }
+                        case "moveback":{
+                            cursorX-=parseFloat(parts[1]);
+                            if (cursorX<0)
+                                cursorX = 0;
+                            break;
+                        }
                     }
                 } else {
-                    let size;
+                    let
+                        size,
+                        dy = 0;
                     if (bold) {
+                        nextWordSpacing=WORDSPACING;
                         svg.setText(boldTextNode,word);
                         size=measureNode(boldTextNode);
                     } else if (italic) {
+                        nextWordSpacing=WORDSPACING+ITALICSPACING;
                         svg.setText(italicTextNode,word);
                         size=measureNode(italicTextNode);
                     } else {
+                        nextWordSpacing=WORDSPACING;
                         svg.setText(normalTextNode,word);
                         size=measureNode(normalTextNode);
                     }
@@ -193,17 +259,28 @@ function CardPrinter(svg,modelid,x,y) {
                         text:word,
                         bold:bold,
                         italic:italic,
-                        size:size
+                        size:size,
+                        dy:dy
                     };
                 }
                 if (node) {
-                    if (cursorX) cursorX+=settings.wordSpacing;
-                    if (cursorX+node.size.width>width)
+                    if (cursorX) cursorX+=wordSpacing;
+                    wordSpacing = nextWordSpacing;
+                    if (wordWrap && (cursorX+node.size.width>width))
                         newLine();
+                    if (multiPage && isDirty && (cursorY+node.size.height>height)) {
+                        renderPage();
+                        newPage();
+                        lineId=-1;
+                        cursorX=0;
+                        cursorY=0;
+                        newLine();
+                    }
                     node.x=cursorX;
                     lines[lineId].boxes.push(node);
                     lineHeight=Math.max(lineHeight,node.size.height);
                     cursorX+=node.size.width;
+                    isDirty = true;
                 }
                 word="";
             }
@@ -309,7 +386,7 @@ function CardPrinter(svg,modelid,x,y) {
             line.boxes.forEach(box=>{
                 let
                     dx=box.x+ox,
-                    dy=oy+line.y+(line.height-box.size.height)/2;
+                    dy=oy+line.y+(line.height-box.size.height)/2+(box.italic ? ITALICTILT : 0);
                 if (box.text) {
                     let node=cloneNodeBy(side,orgTextNode,0,dx,dy+box.size.height-settings.textGap);
                     disableKerning(node);
